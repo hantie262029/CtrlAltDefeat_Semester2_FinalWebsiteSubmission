@@ -3,13 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-        <meta name="viewport" content="width-device-width, initial-scale-1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="keywords" content="html, css, Javascript, movie, watch later, watch list" />
         <meta
             name="author"
             content="co-authored by Adel van der Walt 262001, Andrya Kritzinger 262002, Hantie Pistorius 262029, Kiara Addinall 262078" />
 
-        <title>Popcorn Movies</title>
         <title>Popcorn Movies</title>
 
         <!-- bootstap link -->
@@ -19,30 +18,93 @@
     </head>
     <body>
 
+        <section class="pageBody m-4">
         <!-- Base for Api Test -->
         <h1 id="title">Template</h1>
         <p>Release date: <span id="releaseDate"></span></p>
         <img id="poster" src="" alt="" />
 
+
+
+        <!-- Basic cards with info (home page) -->
+        <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-2 h-100">
+                    <div class="card infoCard" style="width: 18rem;">
+                        <img src="assets/Screenshot 2026-09-25 155349.png" class="card-img-top  rounded-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Movie name +...</h5>
+                            <p class="card-text">Creator ...<br>Genre ...<br>Rating...</p>
+                            <!-- <a href="#" class="btn btn-primary">View Movie</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicates -->
+                <div class="col-md-6 col-lg-2 h-100">
+                    <div class="card infoCard" style="width: 18rem;">
+                        <img src="assets/Screenshot 2026-09-25 155349.png" class="card-img-top  rounded-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Movie name +...</h5>
+                            <p class="card-text">Creator ...<br>Genre ...<br>Rating...</p>
+                            <!-- <a href="#" class="btn btn-primary">View Movie</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2 h-100">
+                    <div class="card infoCard" style="width: 18rem;">
+                        <img src="assets/Screenshot 2026-09-25 155349.png" class="card-img-top  rounded-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Movie name +...</h5>
+                            <p class="card-text">Creator ...<br>Genre ...<br>Rating...</p>
+                            <!-- <a href="#" class="btn btn-primary">View Movie</a> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        </section>
+
+
         <section>
         <!-- Content Library card basic base -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3 mt-3 h-100">
+                <div class="col-lg-3 mt-3 h-100">
                     <div class="card" style="width: 100%;">
                     <div class="row">
                     <div class="col-sm-6">
                     <img src="assets/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100" style="object-fit:cover;" alt="Awaiting image">
                     </div>
                     <div class="col-sm-6 card-body">
-                        <h5 class="card-title">Card Example</h5>
-                        <a href="#" class="btn btn-primary col-md-8 my-2">Go somewhere</a>
-                        <a href="#" class="btn btn-primary col-md-8">Go somewhere</a>
-                    </div>
+                        <h5 class="card-title">Movie name +...</h5>
+                        <a href="#" class="MovieBtn btn btn-primary col-md-8 my-2">View Movie</a>
+                        <a href="#" class="ListBtn btn btn-primary col-md-8">Add to List</a>
                     </div>
                     </div>
                 </div>
+                </div>
+
+                <div class="col-lg-3 mt-3 h-100">
+                    <div class="card" style="width: 100%;">
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img src="assets/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100" style="object-fit:cover;" alt="Awaiting image">
+                    </div>
+                    <div class="col-sm-6 card-body">
+                        <h5 class="card-title">Movie name +...</h5>
+                        <a href="#" class="MovieBtn btn btn-primary col-md-8 my-2">View Movie</a>
+                        <a href="#" class="ListBtn btn btn-primary col-md-8">Add to List</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
             </div>
+        </div>
         </section>
 
 <!-- Basic Movie Image card -->
@@ -57,7 +119,7 @@
     </div>
 
 
-
+    </section>
 
 
 
