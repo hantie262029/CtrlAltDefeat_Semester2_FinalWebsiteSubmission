@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Basic css */
 
 body {
@@ -7,7 +8,7 @@ body {
 
 
 /* navbar */
-@charset "UTF-8";
+
 .navigation {
   height: 70px;
   background: #10182A;
@@ -44,7 +45,7 @@ nav ul li {
   float: left;
   position: relative;
 }
-nav ul li a,
+nav ul li a, .searchNav,
 nav ul li a:visited {
   display: block;
   padding: 0 20px;
@@ -173,7 +174,7 @@ nav ul li ul li a, .searchNav {
 
 /* Home page */
 #homeHero{
-  /* TBC Replace with dynamic image BE */
+  /* TBC Replace with dynamic image BEBE */
   background-image: url(../assets/Screenshot\ 2026-09-25\ 155349.png);
   background-size: cover, 50%;
 }
@@ -185,16 +186,17 @@ nav ul li ul li a, .searchNav {
 
 
 /* CodePen based Sign in/up */
-html {
-  box-sizing: border-box;
-}
 
-body {
+/* html {
+  box-sizing: border-box;
+} */
+
+/* body {
   background-color: #F5F5F5;
   font-family:Roboto;
-}
+} */
 
-
+/* 
 a {
   text-decoration:none;
   margin:0;
@@ -479,21 +481,21 @@ button:hover {
   animation: login-swap 0.5s ease forwards;
 }
 
-/* @keyframes register-swap {
-    0% {transform: translate(0%; 0%)}
+@keyframes register-swap {
+    0% {transform: translate(0%, 0%)}
     50% {transform: translate(50%, 0%);}
-     0% {transform: translate(0%; 0%)}
+     0% {transform: translate(0%, 0%)}
 }
 
 @keyframes login-swap {
-    0% {transform: translate(0%; 0%)}
+    0% {transform: translate(0%, 0%)}
     50% {transform: translate(-50%, 0%);}
-     0% {transform: translate(0%; 0%)}
+     0% {transform: translate(0%, 0%)}
 } */
 
 /* Status Bar */
 
-#statusbar {
+/* #statusbar {
   position:absolute;
   top:0;
   left:0;
@@ -531,9 +533,12 @@ button:hover {
 .twelvehr {
   text-transform:uppercase;
   margin-left:5px;
-}
+} */
 
 /* End Status Bar */
+
+
+
 /* Library */
 
 .libraryCard {

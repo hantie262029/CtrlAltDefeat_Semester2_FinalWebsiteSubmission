@@ -29,9 +29,12 @@ class Movie {
 
     let newMovie = new Movie(title, releaseDate, poster);
 
-    document.getElementById('title').innerHTML = newMovie.title;
-    document.getElementById('releaseDate').innerHTML = newMovie.releaseDate;
-    document.getElementById('poster').src = newMovie.poster;
+
+    // TBC NOTE I commented these files out since there is errors if they are not referenced anywhere BEBE
+
+    // document.getElementById('title').innerHTML = newMovie.title;
+    // document.getElementById('releaseDate').innerHTML = newMovie.releaseDate;
+    // document.getElementById('poster').src = newMovie.poster;
 }();
 
 
