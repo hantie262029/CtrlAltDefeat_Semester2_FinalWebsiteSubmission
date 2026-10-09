@@ -1,15 +1,16 @@
+/* Basic css */
 
-/* CSS across pages / Base CSS Here */
+body {
+    background-color: #1F2B3B
+}
 
 
 
-
-
-/* Nav bar */
+/* navbar */
 @charset "UTF-8";
 .navigation {
   height: 70px;
-  background: #262626;
+  background: #10182A;
 }
 
 .brand {
@@ -43,18 +44,18 @@ nav ul li {
   float: left;
   position: relative;
 }
-nav ul li a, .searchNav,
+nav ul li a,
 nav ul li a:visited {
   display: block;
   padding: 0 20px;
   line-height: 70px;
-  background: #262626;
+  background: #10182A;
   color: #ffffff;
   text-decoration: none;
 }
 nav ul li a:hover,
 nav ul li a:visited:hover {
-  background: #2581DC;
+  background: #4FD984;
   color: #ffffff;
 }
 nav ul li a:not(:only-child):after,
@@ -69,13 +70,6 @@ nav ul li ul li a, .searchNav {
   padding: 15px;
   line-height: 20px;
 }
-
-.searchNav{
-    padding: 15px;
-    line-height: 20px;
-    margin: 10px;
-}
-
 
 .nav-dropdown {
   position: absolute;
@@ -95,11 +89,17 @@ nav ul li ul li a, .searchNav {
   width: 70px;
 } 
 
+.searchNav{
+    padding: 15px;
+    line-height: 20px;
+}
 
 @media only screen and (max-width: 798px) {
   .nav-mobile {
     display: block;
   }
+
+  
 
   nav {
     width: 100%;
@@ -479,7 +479,7 @@ button:hover {
   animation: login-swap 0.5s ease forwards;
 }
 
-@keyframes register-swap {
+/* @keyframes register-swap {
     0% {transform: translate(0%; 0%)}
     50% {transform: translate(50%, 0%);}
      0% {transform: translate(0%; 0%)}
@@ -489,7 +489,7 @@ button:hover {
     0% {transform: translate(0%; 0%)}
     50% {transform: translate(-50%, 0%);}
      0% {transform: translate(0%; 0%)}
-}
+} */
 
 /* Status Bar */
 
@@ -534,3 +534,28 @@ button:hover {
 }
 
 /* End Status Bar */
+/* Library */
+
+.libraryCard {
+    height: 60%;
+    background-color: #91A0B3;
+    
+}
+
+.libraryCardImg{
+    width: 60%;
+}
+
+.MovieBtn {
+    background-color:#4FD984;
+
+}
+
+.ListBtn{
+    background-color: #808BF7;
+}
+
+.MovieBtn:hover, .ListBtn:hover{
+    background-color:#08095e;
+
+}

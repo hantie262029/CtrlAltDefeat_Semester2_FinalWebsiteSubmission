@@ -37,7 +37,6 @@ class Movie {
 
 
 
-
 // Navbar CodePen based js below:
 
 (function($) { // Begin jQuery
