@@ -85,7 +85,7 @@ nav ul li ul li a, .searchNav {
   position: absolute;
   top: 0;
   right: 0;
-  background: #262626;
+  background:#10182A;
   height: 70px;
   width: 70px;
 } 
@@ -93,6 +93,7 @@ nav ul li ul li a, .searchNav {
 .searchNav{
     padding: 15px;
     line-height: 20px;
+    margin: 8px;
 }
 
 @media only screen and (max-width: 798px) {
@@ -184,8 +185,7 @@ nav ul li ul li a, .searchNav {
 
 
 
-
-/* CodePen based Sign in/up */
+/* CodePen based Sign in/up TBC*/
 
 /* html {
   box-sizing: border-box;
