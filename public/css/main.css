@@ -178,7 +178,7 @@ nav ul li ul li a, .searchNav {
 
 #homeHero{
   size: 50%, 100%;
-
+  position: relative;
 }
 
 .HeroImageContainer{
@@ -186,6 +186,8 @@ nav ul li ul li a, .searchNav {
   height: 90vh;
 }
 .HeroImageContainer img{
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
