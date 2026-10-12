@@ -578,16 +578,21 @@ button:hover {
 }
 
 .MovieBtn {
-    background-color:#4FD984;
+  color: #080808;
+  background-color:#4FD984;
+  border-color: #10182a00;
 
 }
 
 .ListBtn{
-    background-color: #808BF7;
+  color: #080808;
+  background-color: #808BF7;
+  border-color: #10182a00;
+  width: 50px;
 }
 
 .MovieBtn:hover, .ListBtn:hover{
-    background-color:#08095e;
+  background-color:#08095e;
 
 }
 
@@ -602,4 +607,34 @@ button:hover {
 
 #list2{
   padding-top: 20px;
+}
+.movieCardBtn{
+  padding-top: 40%;
+}
+
+
+/* individual Movie */
+
+.heroMovie{
+  padding: 40px;
+  display: flex;
+  flex-direction: row;
+}
+
+.movieText{
+  color: #ffffff;
+  width: 50%;
+  padding-left: 20px;
+}
+
+.movieImg{
+  border-radius: 20px;
+}
+
+.movieCards{
+  padding: 2%;
+}
+
+.recsIndividual{
+  padding: 20px;
 }
