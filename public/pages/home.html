@@ -59,149 +59,53 @@
         </section>
 
 
-<!-- Card sections -->
-        <!-- Card set basic - Lists -->
+<!-- Trending Movies - Bootstrap carousel (filled by script.js) -->
         <section id="homeInfoCardSection" class="mb-4">
-
+ 
             <div class="listHeading">
                 <h3>Trending Movies</h3>
             </div>
-                    
-                    <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
+ 
+            <div class="container-fluid">
+                <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000" data-bs-touch="true">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <p class="loading-text text-center py-5">Loading trending movies…</p>
                         </div>
                     </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-
+ 
+                    <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
-
-        
-        
+ 
         </section>
-
-        <!-- Card sets basic -->
+ 
+ 
+        <!-- Top Rated Movies - grid (filled by script.js) -->
         <section class="HeadingWithCards mb-4">
-
+ 
             <div class="listHeading">
                 <h3>Top Rated Movies</h3>
             </div>
-
+ 
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 mt-3">
-                        <div class="card" style="width: 100%;">
-                            <img src="../assets/img/Screenshot 2026-09-25 155349.png" class="card-img-top h-100 w-100  rounded-2" style="object-fit:cover;" alt="Awaiting image">    
-                        </div>
-                    </div>
-
-
+                <div id="topRatedGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-6 g-3 mt-1">
+                    <p class="loading-text text-center py-5 w-100">Loading top rated movies…</p>
                 </div>
-
+ 
+                <div class="text-center mt-4">
+                    <button id="showMoreTopRated" type="button" class="btn btn-outline-secondary d-none">Show more</button>
+                </div>
             </div>
-
+ 
         </section>
-
-
 
 
         <!-- jQuery, from a CDN -->

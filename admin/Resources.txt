@@ -1,0 +1,6 @@
+References:
+async functions how they work
+https://www.theodinproject.com/lessons/node-path-javascript-async-and-await
+
+Sort Function for arrays
+https://www.w3schools.com/jsref/jsref_sort.asp
