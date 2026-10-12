@@ -638,3 +638,42 @@ button:hover {
 .recsIndividual{
   padding: 20px;
 }
+
+/* movie card CSS */
+
+.loading-text {
+  color: white;
+}
+
+#trendingCarousel {
+    padding: 0;
+}
+ 
+#trendingCarousel .carousel-control-prev,
+#trendingCarousel .carousel-control-next {
+    width: 3rem;
+}
+ 
+.movie-poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+ 
+.movie-title {
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-rating {
+  color: gold;
+}
+
+.star-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 4px;
+}

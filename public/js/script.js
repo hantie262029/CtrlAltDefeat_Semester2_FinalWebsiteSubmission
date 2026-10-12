@@ -1,13 +1,13 @@
 class Movie {
-    constructor(_title, _releaseDate, _poster) {
+    constructor(_title, _releaseDate, _poster, _rating) {
         this.title = _title;
         this.releaseDate = _releaseDate;
         this.poster = _poster;
+        this.rating = _rating;
     }
 }
 
-!async function () {
-    const options = {
+const options = {
         method: 'GET',
         headers: {
             accept: 'application/json',
@@ -15,29 +15,70 @@ class Movie {
         }
     };
 
-    let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+    async function getMovies(url) {
+    let data = await fetch(url, options)
         .then(res => res.json())
         .catch(err => console.error(err));
 
-    console.log(data);
+    console.log('API response:', data);
+ 
+    let movies = data.results.map(movie => new Movie(
+            movie.title,
+            movie.release_date,
+            "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+            movie.vote_average
+        ));
 
-    let movie = data.results[0]; //First movie
+        console.log('Movie results:', movies);
+        return movies;
+    }
 
-    let title = movie.original_title;
-    let releaseDate = movie.release_date;
-    let poster = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
+    function movieCard(movie) {
+      console.log("Movie card being built: " + movie.title)
+    return `
+        <div class="col">
+            <div class="card movie-card border-0 bg-transparent">
+                <img src="${movie.poster}" class="movie-poster rounded-2" alt="${movie.title}">
+                <h6 class="movie-title mt-2 mb-1 d-none d-md-block">${movie.title}</h6>
+                <p class="movie-rating mb-0"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}</p>
+            </div>
+        </div>`;
+    }
 
-    let newMovie = new Movie(title, releaseDate, poster);
+    !async function () {
 
+     // Carousel - 12 random movies
+    let randomPage = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
+    let randomMovies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=' + randomPage);
+    randomMovies = randomMovies.slice(0, 12); // grab 12
+    console.log("Carousel movies (12):", randomMovies);
 
-    // TBC NOTE I commented these files out since there is errors if they are not referenced anywhere BEBE
+    let currentSlideAmount = 0;
 
-    // document.getElementById('title').innerHTML = newMovie.title;
-    // document.getElementById('releaseDate').innerHTML = newMovie.releaseDate;
-    // document.getElementById('poster').src = newMovie.poster;
+    function buildCarousel() {
+        let slideAmount = window.innerWidth < 992 ? 3 : 6; // 3 on phone, 6 on desktop
+
+        if (slideAmount === currentSlideAmount) return; // only rebuild when window size changes
+        currentSlideAmount = slideAmount;
+
+        let carouselHTML = '';
+
+        for (let i = 0; i < randomMovies.length; i = i + slideAmount) { // loops through slides until its double the slide amount
+            let slideMovies = randomMovies.slice(i, i + slideAmount);
+            carouselHTML += `
+                <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                    <div class="row row-cols-${slideAmount} g-2">
+                        ${slideMovies.map(movieCard).join('')}
+                    </div>
+                </div>`;
+        }
+
+        document.querySelector('#trendingCarousel .carousel-inner').innerHTML = carouselHTML;
+    }
+
+    buildCarousel();
+    window.addEventListener('resize', buildCarousel);
 }();
-
-
 
 
 // Navbar CodePen based js below:
@@ -153,4 +194,3 @@ var $document = $(document);
   };
   clock();
 })();
-
