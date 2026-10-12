@@ -184,17 +184,26 @@ nav ul li ul li a, .searchNav {
 }
 
 .MovieBtn {
-    background-color:#4FD984;
+  color: #080808;
+  background-color:#4FD984;
+  border-color: #10182a00;
 
 }
 
 .ListBtn{
-    background-color: #808BF7;
+  color: #080808;
+  background-color: #808BF7;
+  border-color: #10182a00;
+  width: 50px;
 }
 
 .MovieBtn:hover, .ListBtn:hover{
-    background-color:#08095e;
+  background-color:#08095e;
 
+}
+
+.movieCardBtn{
+  padding-top: 40%;
 }
 
 
