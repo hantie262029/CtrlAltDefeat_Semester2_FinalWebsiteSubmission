@@ -78,6 +78,35 @@ const options = {
 
     buildCarousel();
     window.addEventListener('resize', buildCarousel);
+
+    // Top rated - 24 movies
+    let randomPage1 = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
+    let randomPage2;
+
+    do { // checking for duplicate numbers
+      randomPage2 = Math.floor(Math.random() * 10) + 1;// random page between 1 and 10
+    } while (randomPage1 === randomPage2);
+
+    let page1 = await getMovies('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=' + randomPage1); // fetching 2 pages of movies
+    let page2 = await getMovies('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=2' + randomPage2);
+    let topRated = page1.concat(page2); // combine the movies
+    console.log("Fetched Movies:" + topRated)
+
+    topRated.sort((a, b) => b.rating - a.rating); // sort them
+    console.log("Sorted Movies:" + topRated)
+
+    topRated = topRated.slice(0, 24); // only grab 24
+    console.log("Sorted Movies (24):" + topRated)
+
+    let grid = document.getElementById('topRatedGrid');
+    let showMoreBtn = document.getElementById('showMoreTopRated');
+
+    grid.innerHTML = topRated.slice(0, 12).map(movieCard).join('');
+
+    showMoreBtn.addEventListener('click', function () {
+        grid.innerHTML += topRated.slice(12, 24).map(movieCard).join('');
+        showMoreBtn.classList.add('d-none');
+    });
 }();
 
 
