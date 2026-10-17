@@ -50,12 +50,36 @@
 
         <!-- Hero Section -->
         <section id="homeHero" class="mb-4">
-          
-          <div class="HeroImageContainer">
-            <!-- TBC Fix by making img background img so text can be overlaid -->
-            <!-- <h2 id="usernameText">Hello Name</h2> -->
-            <img src="../assets/img/Screenshot 2026-09-25 155349.png" alt="Awaiting image">
-          </div>
+
+            <div class="carousel-frame">
+                <div class="carousel-caption d-none d-md-block greetUser">
+                    <!-- TBC Add name grabbed from login/sign in -->
+                <h1>Hello Name</h1>
+                </div>
+
+                <!-- TBC Carousel get from API -->
+            <div class="carousel-slide">
+                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/abstract.jpg" />
+                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/animal.jpg" />
+                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/architecture.jpg" />
+                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/leaf.jpg" />
+                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/space.jpg" />
+                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/twig.jpg" />
+            </div>
+            <i class="carousel-prev fas fa-chevron-left"></i>
+            <i class="carousel-next fas fa-chevron-right"></i>
+            <ol class="carousel-dots">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+            </div>
+
+            </div>
+        
         </section>
 
 
@@ -101,12 +125,15 @@
                 </div>
  
                 <div class="text-center mt-4">
-                    <button id="showMoreTopRated" type="button" class="btn btn-outline-primary">Show more</button>
+                    <button id="showMoreTopRated" type="button" class="btn showMoreBtn btn-outline-primary">Show more</button>
                 </div>
             </div>
  
         </section>
 
+
+        <!-- Carousel home top slider from codepen TBC -->
+        <script src="https://kit.fontawesome.com/42e3e833b9.js" crossorigin="anonymous" ></script>
 
         <!-- jQuery, from a CDN -->
         <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script> 

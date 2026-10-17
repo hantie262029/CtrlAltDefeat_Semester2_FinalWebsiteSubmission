@@ -50,12 +50,12 @@
 
         <!-- Hero Section - image and info -->
         <section>
-            <div class="heroMovie">
-                <div>
-                  <img class="movieImg" src="../assets/img/moviePosterHorizontal.jpg" width="700px" border-radius: 40%;>
+            <div class="heroMovie row">
+                <div class="col-sm-12 col-lg-6">
+                  <img class="card-img-top rounded-3" style="object-fit:cover;" src="../assets/img/moviePosterHorizontal.jpg">
                 </div>
 
-                <div class="movieText">
+                <div class="movieText col-sm-12 col-lg-6" >
                     <h1>
                         Movie Title 
                     </h1>
@@ -64,10 +64,11 @@
                         Lorem ipsum dolor sit amet consectetur. Justo in proin suscipit diam pellentesque tempus scelerisque diam sed. Congue magna et et lorem vitae elit in massa porttitor. Scelerisque etiam leo eu massa bibendum tempus rhoncus senectus. Amet et viverra in commodo.
                     </h4>
                     <h5>
-                        Rating 
-                        Genre
-                        Creator info
+                        Rating <br>
+                        Genre <br>
+                        Creator info <br>
                     </h5>
+                    <a href="#" class="ListBtn btn btn-primary col-md-8"><i class="fa-solid fa-heart p-2"></i></a>
                 </div>
 
             </div>
@@ -75,6 +76,16 @@
 
         </section>
 
+        <!-- Top Rated Movies - grid (filled by script.js) -->
+        <section class="HeadingWithCards mb-4">
+ 
+            <div class="listHeading">
+                <h3>Top Rated Movies</h3>
+            </div>
+ 
+
+ 
+        </section>
    
         <!-- Card set basic - Recommendations -->
         <section class="recsIndividual">
