@@ -1,0 +1,13 @@
+References:
+async functions how they work
+https://www.theodinproject.com/lessons/node-path-javascript-async-and-await
+
+Sort Function for arrays
+https://www.w3schools.com/jsref/jsref_sort.asp
+
+Window. methods for responsiveness coding
+https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
+https://www.w3schools.com/jsref/prop_win_innerwidth.asp
+
+Do while loop
+https://www.w3schools.com/jsref/jsref_dowhile.asp
