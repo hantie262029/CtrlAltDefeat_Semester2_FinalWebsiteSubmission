@@ -303,6 +303,15 @@ nav ul li ul li a,
     object-fit: cover;
 }
 
+.movie-poster {
+  /* Syntax: filter: drop-shadow(offset-x offset-y blur-radius color) */
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.movie-poster:hover{
+    border: 2px solid #4cd987;
+}
+
 /* TBC */
 /* #homeHero{
   background-image: url(../assets/img/Screenshot\ 2026-09-25\ 155349.png);
@@ -693,8 +702,22 @@ button:hover {
 
 .MovieBtn:hover,
 .ListBtn:hover {
-    background-color: #08095e;
+    background-color: #08095e; 
 }
+
+.iconWrapper .fa-solid{
+    display: none;
+}
+
+.iconWrapper:hover .fa-regular {
+    display: none;
+}
+
+.iconWrapper:hover .fa-solid {
+    display: inline-block;
+}
+
+
 
 /* Lists Page */
 
