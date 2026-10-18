@@ -328,6 +328,15 @@ nav ul li ul li a,
     object-fit: cover;
 }
 
+.movie-poster {
+  /* Syntax: filter: drop-shadow(offset-x offset-y blur-radius color) */
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.movie-poster:hover{
+    border: 2px solid #4cd987;
+}
+
 .carousel-slide img {
   min-width: 100%;
   object-fit: cover;
@@ -775,6 +784,20 @@ button:hover {
     background-color: #08095e;
 }
 
+.iconWrapper .fa-solid{
+    display: none;
+}
+
+.iconWrapper:hover .fa-regular {
+    display: none;
+}
+
+.iconWrapper:hover .fa-solid {
+    display: inline-block;
+}
+
+
+
 /* Lists Page */
 
 .listHeading {
@@ -856,3 +879,4 @@ button:hover {
     vertical-align: middle;
     margin-right: 4px;
 }
+
