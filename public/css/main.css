@@ -36,7 +36,7 @@ body {
 
     /* Smoothly animate the glow transition */
     transition: box-shadow 0.2s ease;
-    transform 0.2s ease;
+    transform: 0.2s ease;
 }
 .info-box:hover {
     box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.25);
@@ -893,4 +893,4 @@ button:hover {
 
 .hero-rating .star-icon {
     width: 20px;
-} No newline at end of file
+}
