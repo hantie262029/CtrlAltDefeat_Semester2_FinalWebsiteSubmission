@@ -13,11 +13,13 @@ class user {
 
 // Movie Class
 class Movie {
-    constructor(_title, _releaseDate, _poster, _rating) {
+    constructor(_title, _releaseDate, _poster, _rating, _backdrop, _overview) {
         this.title = _title;
         this.releaseDate = _releaseDate;
         this.poster = _poster;
         this.rating = _rating;
+        this.backdrop = _backdrop;
+        this.overview = _overview;
     }
 }
 
@@ -35,17 +37,14 @@ async function getMovies(url) {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 
-    console.log("API response:", data);
+    console.log('API response:', data);
 
-    let movies = data.results.map(
-        (movie) =>
-            new Movie(
-                movie.title,
-                movie.release_date,
-                "https://image.tmdb.org/t/p/w500" + movie.poster_path,
-                movie.vote_average,
-            ),
-    );
+    let movies = data.results.map(movie => new Movie(
+            movie.title,
+            movie.release_date,
+            "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+            movie.vote_average
+        ));
 
     console.log("Movie results:", movies);
     return movies;
@@ -63,8 +62,9 @@ function movieCard(movie) {
         </div>`;
 }
 
-!(async function () {
-    // Carousel - 12 random movies
+    !async function () {
+
+     // Carousel - 12 random movies
     let randomPage = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
     let randomMovies = await getMovies("https://api.themoviedb.org/3/movie/popular?language=en-US&page=" + randomPage);
     randomMovies = randomMovies.slice(0, 12); // grab 12
