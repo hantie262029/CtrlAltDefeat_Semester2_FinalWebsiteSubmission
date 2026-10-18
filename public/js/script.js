@@ -49,26 +49,29 @@ const options = {
         </div>`;
     }
 
+    // HOME PAGE
     !async function () {
 
+      if (!document.getElementById('heroInner')) return; // IF not on the home page then skip
+
       // Hero
-let heroData = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4', options)
+    let heroData = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4', options)
     .then(res => res.json());
 
-let heroMovies = heroData.results.filter(movie => movie.backdrop_path).slice(0, 5); // only movies with a backdrop, max 5
+    let heroMovies = heroData.results.filter(movie => movie.backdrop_path).slice(0, 5); // only movies with a backdrop, max 5
 
-document.getElementById('heroInner').innerHTML = heroMovies.map((movie, i) => `
-  <div class="carousel-item ${i === 0 ? 'active' : ''}">
-    <img src="https://image.tmdb.org/t/p/w1280${movie.backdrop_path}" class="d-block w-100 hero-img" alt="${movie.title}">
-    <div class="carousel-caption text-start">
-      <h2>${movie.title}</h2>
-      <p class="hero-rating">
-      <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.vote_average.toFixed(1)}
-      </p>
-      <p class="hero-overview">${movie.overview}</p>
-    </div>
-  </div>
-`).join('');
+    document.getElementById('heroInner').innerHTML = heroMovies.map((movie, i) => `
+      <div class="carousel-item ${i === 0 ? 'active' : ''}">
+        <img src="https://image.tmdb.org/t/p/w1280${movie.backdrop_path}" class="d-block w-100 hero-img" alt="${movie.title}">
+        <div class="carousel-caption text-start">
+          <h2>${movie.title}</h2>
+          <p class="hero-rating">
+          <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.vote_average.toFixed(1)}
+          </p>
+          <p class="hero-overview">${movie.overview}</p>
+        </div>
+      </div>
+    `).join('');
 
 bootstrap.Carousel.getOrCreateInstance('#heroCarousel').cycle(); // Autoplay slides
 
