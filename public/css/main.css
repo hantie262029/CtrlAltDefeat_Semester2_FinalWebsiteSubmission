@@ -856,3 +856,19 @@ button:hover {
     vertical-align: middle;
     margin-right: 4px;
 }
+
+.hero-img {
+    height: 70vh;
+    object-fit: cover;
+    filter: brightness(60%); /* darkens the image so text is readable */
+}
+
+.hero-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-rating .star-icon {
+    width: 20px;
+}

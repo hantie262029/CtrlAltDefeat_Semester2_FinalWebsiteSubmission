@@ -49,38 +49,20 @@
 
 
         <!-- Hero Section -->
-        <section id="homeHero" class="mb-4">
-
-            <div class="carousel-frame">
-                <div class="carousel-caption d-none d-md-block greetUser">
-                    <!-- TBC Add name grabbed from login/sign in -->
-                <h1>Hello Name</h1>
-                </div>
-
-                <!-- TBC Carousel get from API -->
-            <div class="carousel-slide">
-                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/abstract.jpg" />
-                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/animal.jpg" />
-                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/architecture.jpg" />
-                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/leaf.jpg" />
-                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/space.jpg" />
-                <img src="https://raw.githubusercontent.com/asbelljc/carousel-builder/main/sample/Images/twig.jpg" />
-            </div>
-            <i class="carousel-prev fas fa-chevron-left"></i>
-            <i class="carousel-next fas fa-chevron-right"></i>
-            <ol class="carousel-dots">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ol>
+    <section id="homeHero" class="mb-4">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner" id="heroInner">
+                <p class="text-center py-5">Loading new releases…</p>
             </div>
 
-            </div>
-        
-        </section>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
 
 
 <!-- Trending Movies - Bootstrap carousel (filled by script.js) -->
