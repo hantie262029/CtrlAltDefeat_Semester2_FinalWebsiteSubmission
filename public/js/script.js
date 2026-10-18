@@ -52,7 +52,7 @@ const options = {
     !async function () {
 
       // Hero
-let heroData = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+let heroData = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4', options)
     .then(res => res.json());
 
 let heroMovies = heroData.results.filter(movie => movie.backdrop_path).slice(0, 5); // only movies with a backdrop, max 5
