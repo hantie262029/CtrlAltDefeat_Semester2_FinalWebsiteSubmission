@@ -865,6 +865,8 @@ button:hover {
     margin-right: 4px;
 }
 
+ /* Hero */
+
 .hero-img {
     height: 70vh;
     object-fit: cover;
@@ -876,3 +878,19 @@ button:hover {
     align-items: center;
     gap: 6px;
 }
+
+.hero-img {
+    height: 70vh;
+    object-fit: cover;
+    filter: brightness(60%); /* Darkens image */
+}
+
+.hero-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-rating .star-icon {
+    width: 20px;
+} No newline at end of file
