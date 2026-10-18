@@ -797,8 +797,7 @@ button:hover {
 .movieCardBtn {
     padding-top: 40%;
 }
-
-/* individual Movie */
+ /* Hero */
 
 .heroMovie {
     padding: 40px;
@@ -864,4 +863,16 @@ button:hover {
     height: 16px;
     vertical-align: middle;
     margin-right: 4px;
+}
+
+.hero-img {
+    height: 70vh;
+    object-fit: cover;
+    filter: brightness(60%); /* Darkens image */
+}
+
+.hero-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }

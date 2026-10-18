@@ -13,11 +13,13 @@ class user {
 
 // Movie Class
 class Movie {
-    constructor(_title, _releaseDate, _poster, _rating) {
+    constructor(_title, _releaseDate, _poster, _rating, _backdrop, _overview) {
         this.title = _title;
         this.releaseDate = _releaseDate;
         this.poster = _poster;
         this.rating = _rating;
+        this.backdrop = _backdrop;
+        this.overview = _overview;
     }
 }
 
