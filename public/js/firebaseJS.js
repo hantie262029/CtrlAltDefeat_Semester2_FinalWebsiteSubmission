@@ -92,8 +92,8 @@ async function handleLogin(userEmail, userPassword) {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
         .then(function (userCredential) {
             console.log("Logged in as: " + userCredential.user.email);
-
             window.location.href = "pages/home.html";
+            // Add something here that saves the email to a user class in users
         })
         .catch(function (error) {
             console.log("Log in Error: " + error.code);
