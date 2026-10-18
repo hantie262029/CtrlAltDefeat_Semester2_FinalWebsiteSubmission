@@ -141,6 +141,11 @@ button:hover {
     height: 70px;
     /* height: 10vh; */
     background: #10182a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    margin: 0;
 }
 
 .brand {
@@ -822,7 +827,7 @@ button:hover {
 }
  /* Hero */
 
-.heroMovie {
+.individualHeroMovie {
     padding: 40px;
     display: flex;
     height: 100%;
