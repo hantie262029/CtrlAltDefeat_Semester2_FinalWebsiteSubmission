@@ -758,6 +758,11 @@ button:hover {
 
 /* Library */
 
+.filterBtn{
+    padding-left: 2%;
+    padding-top: 2%;
+}
+
 .libraryCard {
     height: 40vh;
     background-color: #91a0b3;
@@ -809,6 +814,7 @@ button:hover {
 .iconWrapper:hover .fa-solid {
     display: inline-block;
 }
+
 
 
 
