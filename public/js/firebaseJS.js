@@ -60,7 +60,7 @@ function getFriendlyErrorMessage(errorCode) {
     } else if (errorCode === "auth/email-already-in-use") {
         friendlyMessage = "An account with this password already exists.";
     } else if (errorCode === "auth/weak-password") {
-        friendlyMessage = "Password must be atleast 6 characters long.";
+        friendlyMessage = "Password must be at least 6 characters long.";
     } else if ((errorCode = "auth/invalid-email")) {
         friendlyMessage = "Please enter a valid email address";
     } else if (errorCode === "auth/too-many-requests") {
