@@ -489,6 +489,8 @@ nav ul li ul li a,
 .listHeading {
     color: #ffffff;
     padding: 20px;
+    padding-top: 4vh;
+    padding-bottom: 2vh;
 }
 
 #list2 {
