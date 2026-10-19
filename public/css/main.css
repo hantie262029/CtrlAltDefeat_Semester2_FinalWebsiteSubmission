@@ -92,9 +92,19 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#heroCarousel .carousel-control-prev:hover,
+#heroCarousel .carousel-control-next:hover {
+    background-color: none !important;
+}
+
+#trendingCarousel button:hover,
+#logInCard button:hover {
     background-color: #8bebba;
 }
+
+/* button:hover {
+    background-color: #8bebba;
+} */
 
 #message-text {
     min-height: 20px;
@@ -191,6 +201,7 @@ nav ul li a:visited {
     color: #ffffff;
     text-decoration: none;
 }
+
 nav ul li a:hover,
 nav ul li a:visited:hover {
     background: #4fd984;
@@ -309,6 +320,10 @@ nav ul li ul li a,
 
 /* Home page */
 
+#heroCarousel {
+    background-color: #10182a;
+}
+
 /* Home Hero Slider from Codepen */
 * {
     padding: 0px;
@@ -418,7 +433,7 @@ nav ul li ul li a,
 
 .libraryCard {
     height: 40vh;
-    background-color: #10182a;
+    background-color: #48516454;
 }
 
 .libraryCardImg {
@@ -523,6 +538,8 @@ nav ul li ul li a,
 #trendingCarousel .carousel-control-next {
     width: 3rem;
 }
+
+
 
 .movie-poster {
     width: 100%;
