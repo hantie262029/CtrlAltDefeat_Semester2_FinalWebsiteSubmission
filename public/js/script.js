@@ -68,10 +68,10 @@ function movieCard(movie) {
 
 !(async function () {
   // Hero
-  let heroData = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4', options)
-    .then(res => res.json());
+    let response = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4', options);
+    let heroData = await response.json();
 
-  let heroMovies = heroData.results.filter(movie => movie.backdrop_path).slice(0, 5); // only movies with a backdrop, max 5
+    let heroMovies = heroData.results.slice(0, 5); // only 5
 
   document.getElementById('heroInner').innerHTML = heroMovies.map((movie, i) => `
     <div class="carousel-item ${i === 0 ? 'active' : ''}">
@@ -86,7 +86,8 @@ function movieCard(movie) {
     </div>
     `).join('');
 
-bootstrap.Carousel.getOrCreateInstance('#heroCarousel').cycle(); // Autoplay slides
+    let carousel = new bootstrap.Carousel('#heroCarousel');
+    carousel.cycle(); // autoplay
 
   // Carousel - 12 random movies
     let randomPage = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10

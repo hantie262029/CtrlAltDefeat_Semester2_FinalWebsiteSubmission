@@ -5,9 +5,18 @@ https://www.theodinproject.com/lessons/node-path-javascript-async-and-await
 Sort Function for arrays
 https://www.w3schools.com/jsref/jsref_sort.asp
 
+Join method for arrays
+https://www.w3schools.com/jsref/jsref_join.asp
+
 Window. methods for responsiveness coding
 https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
 https://www.w3schools.com/jsref/prop_win_innerwidth.asp
 
 Do while loop
 https://www.w3schools.com/jsref/jsref_dowhile.asp
+
+Bootstrap Tricks
+https://rajputlakhveer.medium.com/bootstrap-5-mastery-guide-features-hacks-classes-every-developer-should-know-35dc50fd8e8c
+
+Bootstrap Carousel cheat sheet
+https://www.w3schools.com/bootstrap/bootstrap_ref_js_carousel.asp
