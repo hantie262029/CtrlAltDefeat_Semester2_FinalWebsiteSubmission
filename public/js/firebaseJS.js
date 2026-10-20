@@ -93,7 +93,15 @@ async function handleLogin(userEmail, userPassword) {
         .then(function (userCredential) {
             console.log("Logged in as: " + userCredential.user.email);
 
-            // Save BEFORE page change
+            const user = userCredential.user;
+
+            // Save user session data
+            localStorage.setItem("uid", user.uid);
+            localStorage.setItem("email", user.email);
+
+            // Optional username
+            localStorage.setItem("username", user.email.split("@")[0]);
+
             rememberEmail(userEmail);
 
             window.location.href = "pages/home.html";
@@ -144,13 +152,14 @@ function handleSwitchClick(event) {
 async function handleLogout() {
     signOut(auth)
         .then(function () {
-            console.log("Logged out");
+            // When logging out, remove current user
+            // localStorage.removeItem("currentUser");
 
+            console.log("Logged out");
             window.location.href = "index.html";
         })
         .catch(function (error) {
             console.log("logout error: " + error.code);
-            alert("Could not log out. Please try again");
         });
 }
 

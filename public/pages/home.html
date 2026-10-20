@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE-edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="keywords" content="html, css, Javascript, movie, watch later, watch list" />
+        <meta name="keywords" content="html, css, Javascript, movies, trending Movies, featured, top rated " />
         <meta
             name="author"
             content="co-authored by Adel van der Walt 262001, Andrya Kritzinger 262002, Hantie Pistorius 262029, Kiara Addinall 262078" />
@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="../css/main.css" />
     </head>
-    <body>
+    <body onload="homeWelcomeMessage()">
         <!-- navbar -->
         <section class="navigation">
             <div class="nav-container">
@@ -57,7 +57,8 @@
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-caption d-none d-md-block greetUser">
                     <!-- TBC Add name grabbed from login/sign in and add in to greeting -->
-                    <h1 id="homeWelcome">Welcome You!</h1>
+                    <!-- This username is just whatever is in front of the '@' of the user-->
+                    <h1>Welcome You!</h1>
                 </div>
                 <div class="carousel-inner" id="heroInner">
                     <p class="text-center py-5">Loading new releases…</p>
@@ -132,6 +133,9 @@
 
         <!-- Carousel home top slider from codepen TBC -->
         <script src="https://kit.fontawesome.com/42e3e833b9.js" crossorigin="anonymous"></script>
+        <!-- Firebase and User linking  -->
+        <!-- <script type="module" src="js/firebaseJS.js"></script> -->
+        <script defer src="../js/userScripts.js"></script>
 
         <!-- jQuery, from a CDN -->
         <script
