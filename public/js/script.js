@@ -1,16 +1,3 @@
-// User class
-// Needs to pull info from firebase user authentication
-// Add username/nickname to sign up form and have that link back to the firebase database
-// Watchlist not an empty list but a object/dictionary populated by 'ListBtn' toggle
-
-class user {
-    constructor(_email, _watchList) {
-        this.email = _email;
-        this.isLoggedIn = isLoggedIn; // Boolean that gets set to true when user logs in
-        this.watchList = [];
-    }
-}
-
 // Movie Class
 class Movie {
     constructor(_title, _releaseDate, _poster, _rating, _backdrop, _overview) {
@@ -39,15 +26,16 @@ async function getMovies(url) {
 
     console.log("API response:", data);
 
-    let movies = data.results.map((movie) =>
-      new Movie(
-          movie.title,
-          movie.release_date,
-          "https://image.tmdb.org/t/p/w500" + movie.poster_path,
-          movie.vote_average,
-          "https://image.tmdb.org/t/p/w1280" + movie.backdrop_path,
-          movie.overview
-        ),
+    let movies = data.results.map(
+        (movie) =>
+            new Movie(
+                movie.title,
+                movie.release_date,
+                "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+                movie.vote_average,
+                "https://image.tmdb.org/t/p/w1280" + movie.backdrop_path,
+                movie.overview,
+            ),
     );
 
     console.log("Movie results:", movies);
@@ -67,14 +55,16 @@ function movieCard(movie) {
 }
 
 !(async function () {
-  // Hero
-    let response = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4', options);
+    // Hero
+    let response = await fetch("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4", options);
     let heroData = await response.json();
 
     let heroMovies = heroData.results.slice(0, 5); // only 5
 
-  document.getElementById('heroInner').innerHTML = heroMovies.map((movie, i) => `
-    <div class="carousel-item ${i === 0 ? 'active' : ''}">
+    document.getElementById("heroInner").innerHTML = heroMovies
+        .map(
+            (movie, i) => `
+    <div class="carousel-item ${i === 0 ? "active" : ""}">
       <img src="https://image.tmdb.org/t/p/w1280${movie.backdrop_path}" class="d-block w-100 hero-img" alt="${movie.title}">
       <div class="carousel-caption text-start">
         <h2>${movie.title}</h2>
@@ -84,12 +74,14 @@ function movieCard(movie) {
       <p class="hero-overview">${movie.overview}</p>
       </div>
     </div>
-    `).join('');
+    `,
+        )
+        .join("");
 
-    let carousel = new bootstrap.Carousel('#heroCarousel');
+    let carousel = new bootstrap.Carousel("#heroCarousel");
     carousel.cycle(); // autoplay
 
-  // Carousel - 12 random movies
+    // Carousel - 12 random movies
     let randomPage = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
     let randomMovies = await getMovies("https://api.themoviedb.org/3/movie/popular?language=en-US&page=" + randomPage);
     randomMovies = randomMovies.slice(0, 12); // grab 12
@@ -180,96 +172,6 @@ function movieCard(movie) {
         });
     }); // end DOM ready
 })(jQuery); // end jQuery
-
-// CodePen Based Sign in/up js below:
-// INPUT FIELDS
-
-$(function () {
-    $(".input input")
-        .focus(function () {
-            $(this)
-                .parent(".input")
-                .each(function () {
-                    $("label", this).addClass("label-active label-blue");
-                    $("input", this).addClass("line-active");
-                });
-        })
-        .blur(function () {
-            $("input").removeClass("line-active");
-            $("label").removeClass("label-blue");
-            if ($(this).val() == "") {
-                $(this)
-                    .parent(".input")
-                    .each(function () {
-                        $("label", this).removeClass("label-active");
-                    });
-            }
-        });
-});
-
-// CARD SWAPPING
-
-$(".account-check").click(function () {
-    $(".card").toggleClass("hidden");
-
-    $("#register").removeClass("register-swap");
-    $("#login").removeClass("login-swap");
-    setTimeout(function () {
-        $("#register").addClass("register-swap");
-        $("#login").addClass("login-swap");
-    }, 50);
-});
-
-// MOUSE EVENTS
-
-$("#phone *").mouseover(function () {
-    $(this).css({cursor: "none"});
-});
-
-$(document).on("mousemove", function (e) {
-    $("#cursor").css({
-        left: e.pageX,
-        top: e.pageY,
-    });
-});
-
-$("#phone").mouseover(function () {
-    $("#cursor").css("display", "block");
-});
-
-$("#phone *").mouseout(function () {
-    $("#cursor").css("display", "none");
-});
-
-$("#phone *").mousedown(function () {
-    $("#cursor").css("transform", "scale(0.8)");
-});
-
-$("#phone *").mouseup(function () {
-    $("#cursor").css("transform", "scale(1)");
-});
-
-// CLOCK
-
-var $document = $(document);
-(function () {
-    var clock = function () {
-        clearTimeout(timer);
-
-        date = new Date();
-        hours = date.getHours();
-        minutes = date.getMinutes();
-        dd = hours >= 12 ? "pm" : "am";
-        hours = hours > 12 ? hours - 12 : hours;
-
-        var timer = setTimeout(clock, 10000);
-
-        $(".hours").html("<p>" + Math.floor(hours) + ":</p>");
-        $(".minutes").html("<p>" + Math.floor(minutes) + "</p>");
-        $(".twelvehr").html("<p>" + dd + "</p>");
-    };
-    clock();
-})();
 
 // Home page Hero image slider form codepen
 

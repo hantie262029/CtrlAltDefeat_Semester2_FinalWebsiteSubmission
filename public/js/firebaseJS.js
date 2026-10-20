@@ -17,6 +17,7 @@ let submitButton = document.getElementById("submit-button");
 let messageText = document.getElementById("message-text");
 let switchtext = document.getElementById("switch-text");
 let switchLink = document.getElementById("switch-link");
+let rememberCheckbox = document.getElementById("remember-checkbox");
 
 // Logout button
 let logoutButton = document.getElementById("logout-button");
@@ -26,7 +27,6 @@ let logoutButton = document.getElementById("logout-button");
 let isSignUpMode = false;
 
 //login page functions
-
 function showMessage(messageContent, messageType) {
     messageText.textContent = messageContent;
     messageText.className = messageType;
@@ -61,7 +61,7 @@ function getFriendlyErrorMessage(errorCode) {
         friendlyMessage = "An account with this password already exists.";
     } else if (errorCode === "auth/weak-password") {
         friendlyMessage = "Password must be at least 6 characters long.";
-    } else if ((errorCode = "auth/invalid-email")) {
+    } else if (errorCode === "auth/invalid-email") {
         friendlyMessage = "Please enter a valid email address";
     } else if (errorCode === "auth/too-many-requests") {
         friendlyMessage = "Too many attempts. Please wait a moment and then try again.";
@@ -92,14 +92,43 @@ async function handleLogin(userEmail, userPassword) {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
         .then(function (userCredential) {
             console.log("Logged in as: " + userCredential.user.email);
+
+            const user = userCredential.user;
+
+            // Save user session data
+            localStorage.setItem("uid", user.uid);
+            localStorage.setItem("email", user.email);
+
+            // Optional username
+            localStorage.setItem("username", user.email.split("@")[0]);
+
+            rememberEmail(userEmail);
+
             window.location.href = "pages/home.html";
-            // Add something here that saves the email to a user class in users
         })
         .catch(function (error) {
             console.log("Log in Error: " + error.code);
             let friendlyMessage = getFriendlyErrorMessage(error.code);
             showMessage(friendlyMessage, "error");
         });
+}
+
+// Remember Email
+function rememberEmail(userEmail) {
+    if (rememberCheckbox.checked === true) {
+        localStorage.setItem("savedEmail", userEmail);
+    } else {
+        localStorage.removeItem("savedEmail");
+    }
+}
+
+function loadSavedEmail() {
+    let savedEmail = localStorage.getItem("savedEmail");
+
+    if (savedEmail !== null) {
+        emailInput.value = savedEmail;
+        rememberCheckbox.checked = true;
+    }
 }
 
 function handleFormSubmit(event) {
@@ -123,19 +152,22 @@ function handleSwitchClick(event) {
 async function handleLogout() {
     signOut(auth)
         .then(function () {
-            console.log("Logged out");
+            // When logging out, remove current user
+            // localStorage.removeItem("currentUser");
 
+            console.log("Logged out");
             window.location.href = "index.html";
         })
         .catch(function (error) {
             console.log("logout error: " + error.code);
-            alert("Could not log out. Please try again");
         });
 }
 
 if (authForm !== null) {
     authForm.addEventListener("submit", handleFormSubmit);
     switchLink.addEventListener("click", handleSwitchClick);
+    // Remember email
+    loadSavedEmail();
 }
 
 if (logoutButton !== null) {
