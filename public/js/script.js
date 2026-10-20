@@ -3,13 +3,13 @@
 // Add username/nickname to sign up form and have that link back to the firebase database
 // Watchlist not an empty list but a object/dictionary populated by 'ListBtn' toggle
 
-class user {
-    constructor(_email, _watchList) {
-        this.email = _email;
-        this.isLoggedIn = isLoggedIn; // Boolean that gets set to true when user logs in
-        this.watchList = [];
-    }
-}
+// class user {
+//     constructor(_email, _watchList) {
+//         this.email = _email;
+//         this.isLoggedIn = isLoggedIn; // Boolean that gets set to true when user logs in
+//         this.watchList = [];
+//     }
+// }
 
 // Movie Class
 class Movie {
@@ -39,15 +39,16 @@ async function getMovies(url) {
 
     console.log("API response:", data);
 
-    let movies = data.results.map((movie) =>
-      new Movie(
-          movie.title,
-          movie.release_date,
-          "https://image.tmdb.org/t/p/w500" + movie.poster_path,
-          movie.vote_average,
-          "https://image.tmdb.org/t/p/w1280" + movie.backdrop_path,
-          movie.overview
-        ),
+    let movies = data.results.map(
+        (movie) =>
+            new Movie(
+                movie.title,
+                movie.release_date,
+                "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+                movie.vote_average,
+                "https://image.tmdb.org/t/p/w1280" + movie.backdrop_path,
+                movie.overview,
+            ),
     );
 
     console.log("Movie results:", movies);
@@ -67,14 +68,16 @@ function movieCard(movie) {
 }
 
 !(async function () {
-  // Hero
-    let response = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4', options);
+    // Hero
+    let response = await fetch("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4", options);
     let heroData = await response.json();
 
     let heroMovies = heroData.results.slice(0, 5); // only 5
 
-  document.getElementById('heroInner').innerHTML = heroMovies.map((movie, i) => `
-    <div class="carousel-item ${i === 0 ? 'active' : ''}">
+    document.getElementById("heroInner").innerHTML = heroMovies
+        .map(
+            (movie, i) => `
+    <div class="carousel-item ${i === 0 ? "active" : ""}">
       <img src="https://image.tmdb.org/t/p/w1280${movie.backdrop_path}" class="d-block w-100 hero-img" alt="${movie.title}">
       <div class="carousel-caption text-start">
         <h2>${movie.title}</h2>
@@ -84,12 +87,14 @@ function movieCard(movie) {
       <p class="hero-overview">${movie.overview}</p>
       </div>
     </div>
-    `).join('');
+    `,
+        )
+        .join("");
 
-    let carousel = new bootstrap.Carousel('#heroCarousel');
+    let carousel = new bootstrap.Carousel("#heroCarousel");
     carousel.cycle(); // autoplay
 
-  // Carousel - 12 random movies
+    // Carousel - 12 random movies
     let randomPage = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
     let randomMovies = await getMovies("https://api.themoviedb.org/3/movie/popular?language=en-US&page=" + randomPage);
     randomMovies = randomMovies.slice(0, 12); // grab 12

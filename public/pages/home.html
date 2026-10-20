@@ -12,117 +12,137 @@
         <title>Popcorn Movies</title>
 
         <!-- bootstap link -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous" />
 
         <link rel="stylesheet" href="../css/main.css" />
     </head>
     <body>
-       <!-- navbar -->
+        <!-- navbar -->
         <section class="navigation">
-                <div class="nav-container">
-                            <div class="brand">
-                            <a href="home.html"><img src="../assets/img/logo.png" width="60%"></a>
-                            </div>
-                    <nav>
-                        <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-                        <ul class="nav-list">
-                            <li>
-                            <a href="#!">Home</a>
-                            </li>
-                            <li>
-                            <a href="watchlists.html">Watchlist</a>
-                            </li>
-                            <li>
-                            <a href="library.html">Library</a>
-                            </li>
-                            <li>
-                            <a href="../index.html">Log Out</a>
-                            </li>
-                            <li>
-                            <a><input type="text" placeholder="Search" class="searchNav"></a>
-                            </li>
-                        </ul>
-                    </nav>
+            <div class="nav-container">
+                <div class="brand">
+                    <a href="home.html"><img src="../assets/img/logo.png" width="60%" /></a>
                 </div>
+                <nav>
+                    <div class="nav-mobile">
+                        <a id="nav-toggle" href="#!"><span></span></a>
+                    </div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#!">Home</a>
+                        </li>
+                        <li>
+                            <a href="watchlists.html">Watchlist</a>
+                        </li>
+                        <li>
+                            <a href="library.html">Library</a>
+                        </li>
+                        <li>
+                            <a href="../index.html" id="logout-button">Log Out</a>
+                        </li>
+                        <li>
+                            <a><input type="text" placeholder="Search" class="searchNav" /></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </section>
 
         <!-- Hero Section -->
-    <section id="homeHero" class="mb-4">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-caption d-none d-md-block greetUser">
-                <!-- TBC Add name grabbed from login/sign in and add in to greeting -->
-                <h1>Welcome You!</h1>
+        <section id="homeHero" class="mb-4">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-caption d-none d-md-block greetUser">
+                    <!-- TBC Add name grabbed from login/sign in and add in to greeting -->
+                    <h1 id="homeWelcome">Welcome You!</h1>
+                </div>
+                <div class="carousel-inner" id="heroInner">
+                    <p class="text-center py-5">Loading new releases…</p>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
-            <div class="carousel-inner" id="heroInner">
-                <p class="text-center py-5">Loading new releases…</p>
-            </div>
+        </section>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </section>
-
-
-<!-- Trending Movies - Bootstrap carousel (filled by script.js) -->
+        <!-- Trending Movies - Bootstrap carousel (filled by script.js) -->
         <section id="homeInfoCardSection" class="mb-4">
- 
             <div class="listHeading">
                 <h3>Trending Movies</h3>
             </div>
- 
+
             <div class="container-fluid">
-                <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000" data-bs-touch="true">
+                <div
+                    id="trendingCarousel"
+                    class="carousel slide"
+                    data-bs-ride="carousel"
+                    data-bs-interval="6000"
+                    data-bs-touch="true">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <p class="loading-text text-center py-5">Loading trending movies…</p>
                         </div>
                     </div>
- 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#trendingCarousel"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#trendingCarousel"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
             </div>
- 
         </section>
- 
- 
+
         <!-- Top Rated Movies - grid (filled by script.js) -->
         <section class="HeadingWithCards mb-4">
- 
             <div class="listHeading">
                 <h3>Top Rated Movies</h3>
             </div>
- 
+
             <div class="container-fluid">
                 <div id="topRatedGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-6 g-3 mt-1">
                     <p class="loading-text text-center py-5 w-100">Loading top rated movies…</p>
                 </div>
- 
+
                 <div class="text-center mt-4">
-                    <button id="showMoreTopRated" type="button" class="btn showMoreBtn btn-outline-primary">Show more</button>
+                    <button id="showMoreTopRated" type="button" class="btn showMoreBtn btn-outline-primary">
+                        Show more
+                    </button>
                 </div>
             </div>
- 
         </section>
 
-
         <!-- Carousel home top slider from codepen TBC -->
-        <script src="https://kit.fontawesome.com/42e3e833b9.js" crossorigin="anonymous" ></script>
+        <script src="https://kit.fontawesome.com/42e3e833b9.js" crossorigin="anonymous"></script>
 
         <!-- jQuery, from a CDN -->
-        <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script> 
+        <script
+            src="https://code.jquery.com/jquery-4.0.0.js"
+            integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+            crossorigin="anonymous"></script>
         <!-- bootstrap link -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
         <!-- Javascript Linking -->
         <script defer src="../js/script.js"></script>
     </body>

@@ -45,6 +45,27 @@ body {
     transform: translateY(-1px);
 }
 
+.remember-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.remember-row input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    accent-color: #4fd984;
+    background: #575daa;
+}
+
+.remember-row label {
+    margin: 0;
+    font-size: 14px;
+}
+
 .home-card {
     text-align: center;
 }
@@ -361,11 +382,11 @@ nav ul li ul li a,
 }
 
 .movie-poster {
-  /* Syntax: filter: drop-shadow(offset-x offset-y blur-radius color) */
-  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5));
+    /* Syntax: filter: drop-shadow(offset-x offset-y blur-radius color) */
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5));
 }
 
-.movie-poster:hover{
+.movie-poster:hover {
     border: 2px solid #4cd987;
 }
 
@@ -421,12 +442,9 @@ nav ul li ul li a,
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-
-
-
 /* Library */
 
-.filterBtn{
+.filterBtn {
     padding-left: 2%;
     padding-top: 2%;
 }
@@ -469,7 +487,7 @@ nav ul li ul li a,
     background-color: #08095e;
 }
 
-.iconWrapper .fa-solid{
+.iconWrapper .fa-solid {
     display: none;
 }
 
@@ -480,9 +498,6 @@ nav ul li ul li a,
 .iconWrapper:hover .fa-solid {
     display: inline-block;
 }
-
-
-
 
 /* Lists Page */
 
@@ -497,7 +512,7 @@ nav ul li ul li a,
     padding-top: 20px;
 }
 
- /* Hero */
+/* Hero */
 
 .individualHeroMovie {
     padding: 40px;
@@ -543,8 +558,6 @@ nav ul li ul li a,
     width: 3rem;
 }
 
-
-
 .movie-poster {
     width: 100%;
     aspect-ratio: 2 / 3;
@@ -569,7 +582,7 @@ nav ul li ul li a,
     margin-right: 4px;
 }
 
- /* Hero */
+/* Hero */
 
 .hero-img {
     height: 70vh;
