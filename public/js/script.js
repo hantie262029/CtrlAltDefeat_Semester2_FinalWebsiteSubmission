@@ -156,7 +156,7 @@ function movieCard(movie) {
                 <div class="row h-100">
                 <div class="col-sm-5">
                     <div class="libraryCardImg">
-                        <img src="${movie.poster}" class="card-img-top" style="object-fit:cover;" alt="${movie.title}">
+                        <img src="${movie.poster}" class="card-img" style="object-fit:cover;" alt="${movie.title}">
                     </div>
                 </div>
 

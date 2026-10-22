@@ -464,6 +464,7 @@ nav ul li ul li a,
     height: 100%;
     display: flex;
     object-fit: cover;
+    
 }
 
 .libraryCardInfo{
@@ -471,10 +472,12 @@ nav ul li ul li a,
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: 4px;
 }
 
 .movieCardBtn {
-    padding: 3%;
+    padding: 0%;
+    padding-top: 3%;
     margin-top: auto;
     justify-self: flex-end;
 }
