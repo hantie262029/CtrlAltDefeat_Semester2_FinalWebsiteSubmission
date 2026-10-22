@@ -151,31 +151,32 @@ function movieCard(movie) {
     
         document.getElementById("libraryInner").innerHTML = libraryMovies.map(
             (movie) => `
-                <div class="col-lg-6 mt-3 h-100">
-                    <div class="card libraryCard info-box" style="height: 100%;">
-                    <div class="row">
-                    <div class="col-sm-5">
-                        <div class="libraryCardImg">
-                            <img src="${movie.poster}" class="card-img-top" style="object-fit:cover;" alt="${movie.title}">
-                        </div>
-
-                    </div>
-                    <div class="col-sm-7 card-body position-relative">
-                        <h3 class="card-title">${movie.title}</h3>
-                        <p class="hero-rating">
-                            <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}
-                        </p>
-                        <h6 class="card-title">${movie.overview}</h6>
-                        <div class="position-absolute bottom-0 start-0 end-0">
-                        <div class="movieCardBtn">
-                            <a href="#" class="MovieBtn btn btn-primary col-md-8 my-2">View Movie</a>
-                            <a href="#" class="ListBtn iconWrapper btn btn-primary col-md-8"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a> 
-                        </div>
-                        </div>
-                    </div>
-                    </div>
+            <div class="col-lg-6 mt-3 ">
+                <div class="card libraryCard info-box h-100">
+                <div class="row h-100">
+                <div class="col-sm-5">
+                    <div class="libraryCardImg">
+                        <img src="${movie.poster}" class="card-img-top" style="object-fit:cover;" alt="${movie.title}">
                     </div>
                 </div>
+
+                <div class="col-sm-7 card-body">
+                <div class="libraryCardInfo">
+                    <h3 class="card-title">${movie.title}</h3>
+                    <p class="hero-rating">
+                        <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}
+                    </p>
+                    <h6 class="card-title">${movie.overview}</h6>
+                    <div class="movieCardBtn">
+                        <a href="#" class="MovieBtn btn btn-primary">View Movie</a>
+                        <a href="#" class="ListBtn iconWrapper btn btn-primary"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a> 
+                    </div>
+                </div>
+                </div>
+
+                </div>
+                </div>
+            </div>
             `
         ).join("");
     } else if (document.getElementById("moviePageInner")) {

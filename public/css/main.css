@@ -447,11 +447,16 @@ nav ul li ul li a,
 .filterBtn {
     padding-left: 2%;
     padding-top: 2%;
+
+}
+.filterBtn button{
+        margin-bottom: 4px;
 }
 
 .libraryCard {
     height: 40vh;
     background-color: #48516454;
+    /* height: 100%; */
 }
 
 .libraryCardImg {
@@ -461,8 +466,17 @@ nav ul li ul li a,
     object-fit: cover;
 }
 
+.libraryCardInfo{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .movieCardBtn {
     padding: 3%;
+    margin-top: auto;
+    justify-self: flex-end;
 }
 
 .MovieBtn,
@@ -470,8 +484,13 @@ nav ul li ul li a,
     color: #080808;
     background-color: #4fd984;
     border-color: #10182a00;
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
     margin-bottom: 5px;
+}
+
+.MovieBtn{
+    width: 108pt;
+    margin: 4px;
 }
 
 .ListBtn {
@@ -479,6 +498,7 @@ nav ul li ul li a,
     background-color: #808bf7;
     border-color: #10182a00;
     width: 50px;
+    margin: 4px;
 }
 
 .MovieBtn:hover,
