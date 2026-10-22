@@ -1,12 +1,14 @@
 // Movie Class
 class Movie {
-    constructor(_title, _releaseDate, _poster, _rating, _backdrop, _overview) {
+    constructor(_id, _title, _releaseDate, _poster, _rating, _backdrop, _overview, _genres) {
+        this.id = _id;
         this.title = _title;
         this.releaseDate = _releaseDate;
         this.poster = _poster;
         this.rating = _rating;
         this.backdrop = _backdrop;
         this.overview = _overview;
+        this.genres = _genres;
     }
 }
 
@@ -29,12 +31,14 @@ async function getMovies(url) {
     let movies = data.results.map(
         (movie) =>
             new Movie(
+                movie.id,
                 movie.title,
                 movie.release_date,
                 "https://image.tmdb.org/t/p/w500" + movie.poster_path,
                 movie.vote_average,
                 "https://image.tmdb.org/t/p/w1280" + movie.backdrop_path,
                 movie.overview,
+                movie.genre_ids,
             ),
     );
 
@@ -55,11 +59,17 @@ function movieCard(movie) {
 }
 
 !(async function () {
+    // Load genre data
+    let genres = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options);
+    let genreData = await genres.json();
+
+    console.log("genre data: ", genreData);
     // Hero
-    let response = await fetch("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=4", options);
-    let heroData = await response.json();
+    let popularMovies = await fetch("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1", options);
+    let heroData = await popularMovies.json();
 
     let heroMovies = heroData.results.slice(0, 5); // only 5
+    console.log("Hero movies: ", heroData);
 
     document.getElementById("heroInner").innerHTML = heroMovies
         .map(
@@ -81,11 +91,10 @@ function movieCard(movie) {
     let carousel = new bootstrap.Carousel("#heroCarousel");
     carousel.cycle(); // autoplay
 
-    // Carousel - 12 random movies
-    let randomPage = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
-    let randomMovies = await getMovies("https://api.themoviedb.org/3/movie/popular?language=en-US&page=" + randomPage);
+    // Carousel - 12 trending movies
+    let randomMovies = await getMovies("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
     randomMovies = randomMovies.slice(0, 12); // grab 12
-    console.log("Carousel movies (12):", randomMovies);
+    console.log("Carousel movies (12): ", randomMovies);
 
     let currentSlideAmount = 0;
 
@@ -115,24 +124,13 @@ function movieCard(movie) {
     window.addEventListener("resize", buildCarousel);
 
     // Top rated - 24 movies
-    let randomPage1 = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
-    let randomPage2;
-
-    do {
-        // checking for duplicate numbers
-        randomPage2 = Math.floor(Math.random() * 10) + 1; // random page between 1 and 10
-    } while (randomPage1 === randomPage2);
-
-    let page1 = await getMovies("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=" + randomPage1); // fetching 2 pages of movies
-    let page2 = await getMovies("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=2" + randomPage2);
+    let page1 = await getMovies("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1");
+    let page2 = await getMovies("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=2");
     let topRated = page1.concat(page2); // combine the movies
-    console.log("Fetched Movies:" + topRated);
-
-    topRated.sort((a, b) => b.rating - a.rating); // sort them
-    console.log("Sorted Movies:" + topRated);
+    console.log("Fetched Movies:", topRated);
 
     topRated = topRated.slice(0, 24); // only grab 24
-    console.log("Sorted Movies (24):" + topRated);
+    console.log("Top rated Movies (24):", topRated);
 
     let grid = document.getElementById("topRatedGrid");
     let showMoreBtn = document.getElementById("showMoreTopRated");
@@ -143,6 +141,12 @@ function movieCard(movie) {
         grid.innerHTML += topRated.slice(12, 24).map(movieCard).join("");
         showMoreBtn.classList.add("d-none");
     });
+
+    // Library
+
+    
+
+
 })();
 
 // Navbar CodePen based js below:
