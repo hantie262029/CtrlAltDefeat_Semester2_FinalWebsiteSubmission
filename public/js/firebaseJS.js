@@ -6,6 +6,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 
 import {auth} from "./firebase-config.js";
+import {User} from "./user.js"; // import global user class
 
 // Get all the needed HTML elements/Variable set up
 let authForm = document.getElementById("auth-form");
@@ -20,7 +21,7 @@ let switchLink = document.getElementById("switch-link");
 let rememberCheckbox = document.getElementById("remember-checkbox");
 
 // Logout button
-let logoutButton = document.getElementById("logout-button");
+let logoutButton = document.querySelectorAll("logout-button");
 
 // Keep track of which mode the form is in
 // false; Log In mode, true; Sign Up mode
@@ -91,19 +92,13 @@ async function handleSignUp(userEmail, userPassword) {
 async function handleLogin(userEmail, userPassword) {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
         .then(function (userCredential) {
-            console.log("Logged in as: " + userCredential.user.email);
+            const firebaseUser = userCredential.user;
+            const currentUser = new User(firebaseUser.email);
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-            const user = userCredential.user;
-
-            // Save user session data
-            localStorage.setItem("uid", user.uid);
-            localStorage.setItem("email", user.email);
-
-            // Optional username
-            localStorage.setItem("username", user.email.split("@")[0]);
+            console.log(currentUser);
 
             rememberEmail(userEmail);
-
             window.location.href = "pages/home.html";
         })
         .catch(function (error) {
@@ -156,7 +151,7 @@ async function handleLogout() {
             // localStorage.removeItem("currentUser");
 
             console.log("Logged out");
-            window.location.href = "index.html";
+            // window.location.href = "index.html";
         })
         .catch(function (error) {
             console.log("logout error: " + error.code);
