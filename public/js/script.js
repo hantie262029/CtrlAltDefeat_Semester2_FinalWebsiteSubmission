@@ -60,6 +60,38 @@ function movieCard(movie) {
         </div>`;
 }
 
+function libraryCard(movie) {
+    console.log("Library card being built: " + movie.title);
+    return `
+        <div class="col-lg-6 mt-3">
+            <div class="card libraryCard info-box h-100">
+            <div class="row h-100">
+            <div class="col-sm-5">
+                <div class="libraryCardImg">
+                    <img src="${movie.poster}" class="card-img" style="object-fit:cover;" alt="${movie.title}">
+                </div>
+            </div>
+
+            <div class="col-sm-7 card-body">
+            <div class="libraryCardInfo">
+                <h3 class="card-title libraryCardTitle">${movie.title}</h3>
+                <p>
+                <span class="libraryRating"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}</span> <br />
+                Release date: <span class="libraryReleaseDate">${movie.releaseDate}</span>
+                </p>
+                <p class="card-title">${movie.overview}</p>
+                <div class="movieCardBtn">
+                    <a href="individualmovie.html?id=${movie.id}" class="MovieBtn btn btn-primary">View Movie</a>
+                    <a href="#" class="ListBtn iconWrapper btn btn-primary"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a>
+                </div>
+            </div>
+            </div>
+
+            </div>
+            </div>
+        </div>`;
+}
+
 !(async function () {
     // Load genre data
     let genres = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options);
@@ -146,44 +178,42 @@ function movieCard(movie) {
     });
 
     } else if (document.getElementById("watchlistInner")) {
+        // watchlist code goes here -->
 
     } else if (document.getElementById("libraryInner")) {
         // Library
-        let libraryMovies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+        async function loadLibrary(genreId) {
+            let url = "https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&with_genres=" + genreId;
 
-        console.log("Library Movie list:", libraryMovies);
+            let page1 = await getMovies(url + "&page=1");
+            let page2 = await getMovies(url + "&page=2");
+            let libraryMovies = page1.concat(page2); // 40 movies (brief needs 25+)
+            console.log("Library Movie list:", libraryMovies);
+
+            document.getElementById("libraryInner").innerHTML = libraryMovies.map(libraryCard).join("");
+        }
+
+        loadLibrary(""); // show all movies when the page opens
     
-        document.getElementById("libraryInner").innerHTML = libraryMovies.map(
-            (movie) => `
-            <div class="col-lg-6 mt-3 ">
-                <div class="card libraryCard info-box h-100">
-                <div class="row h-100">
-                <div class="col-sm-5">
-                    <div class="libraryCardImg">
-                        <img src="${movie.poster}" class="card-img" style="object-fit:cover;" alt="${movie.title}">
-                    </div>
-                </div>
+        let buttons = document.querySelectorAll(".filterBtn button"); // fetch filter buttons
 
-                <div class="col-sm-7 card-body">
-                <div class="libraryCardInfo">
-                    <h3 class="card-title">${movie.title}</h3>
-                    <p class="hero-rating">
-                        <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}
-                    </p>
-                    <h6 class="card-title">${movie.overview}</h6>
-                    <div class="movieCardBtn">
-                        <a href="individualmovie.html?id=${movie.id}" class="MovieBtn btn btn-primary">View Movie</a>
-                        <a href="#" class="ListBtn iconWrapper btn btn-primary"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a> 
-                    </div>
-                </div>
-                </div>
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                buttons.forEach((b) => {
+                    b.classList.remove("active");
+                });
 
-                </div>
-                </div>
-            </div>
-            `
-        ).join("");
+                button.classList.add("active");
+
+                let genreId = button.dataset.genre;
+                console.log("Genre ID:", genreId);
+
+                loadLibrary(genreId);
+            });
+        });
+
     } else if (document.getElementById("moviePageInner")) {
+
         let params = new URLSearchParams(window.location.search);
         let movieId = params.get("id");
         console.log("Movie ID:", movieId);
@@ -243,6 +273,7 @@ function movieCard(movie) {
 
     buildCarousel();
     window.addEventListener("resize", buildCarousel);
+
     } else {
         return
     }

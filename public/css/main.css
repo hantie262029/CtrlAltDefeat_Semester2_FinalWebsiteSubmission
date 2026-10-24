@@ -482,6 +482,23 @@ nav ul li ul li a,
 
 /* Library */
 
+.libraryCardTitle {
+    color: white;
+}
+
+.libraryCardInfo {
+    color: whitesmoke;
+    font-weight: normal;
+}
+
+.libraryRating {
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .filterBtn {
     padding-left: 2%;
     padding-top: 2%;
