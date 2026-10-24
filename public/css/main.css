@@ -247,8 +247,8 @@ nav ul li ul li a,
     display: flex;
     align-items: center;
     margin: none;
-    padding: 0 20px;
-    line-height: 70px;
+    /* padding: 0 20px; */
+    /* line-height: 70px; */
 }
 
 .logOutDiv:hover {
@@ -506,7 +506,8 @@ nav ul li ul li a,
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 4px;
+    /* margin-left: 2px; */
+    margin-right: 4px;
 }
 
 .movieCardBtn {
