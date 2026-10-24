@@ -81,7 +81,7 @@ function movieCard(movie) {
                     <p class="hero-rating">
                     <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}
                     </p>
-                    <p class="hero-overview">${movie.overview}</p>
+                    <p class="hero-overview d-none d-md-block">${movie.overview}</p>
                 </div>
             </div>
             `,
