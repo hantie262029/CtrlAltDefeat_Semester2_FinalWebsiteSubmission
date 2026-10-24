@@ -59,8 +59,9 @@
 
         <!-- Hero Section - image and info -->
         <section>
-            <div class="individualHeroMovie row" id="moviePageInner">
-                <div class="col-sm-12 col-lg-6">
+            <div class="container-fluid">
+                <div class="individualHeroMovie row" id="moviePageInner">
+                <!-- <div class="col-sm-12 col-lg-6">
                     <img
                         class="card-img-top rounded-3"
                         style="object-fit:cover;"
@@ -83,6 +84,7 @@
                     <a href="#" class="ListBtn iconWrapper btn btn-primary col-md-8"
                         ><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i
                     ></a>
+                </div> -->
                 </div>
             </div>
         </section>
@@ -90,27 +92,39 @@
         <!-- Trending Movies - Bootstrap carousel (filled by script.js) -->
         <section id="homeInfoCardSection" class="mb-4">
             <div class="listHeading">
-                <h3>Top Rated Movies</h3>
+                <h3>Similiar Movies</h3>
             </div>
-
-            <!-- <div class="container-fluid">
-                <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000" data-bs-touch="true">
+            <div class="container-fluid">
+                <div
+                    id="similiarCarousel"
+                    class="carousel slide"
+                    data-bs-ride="carousel"
+                    data-bs-interval="6000"
+                    data-bs-touch="true">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <p class="loading-text text-center py-5">Loading trending movies…</p>
+                            <p class="loading-text text-center py-5">Loading similiar movies…</p>
                         </div>
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#similiarCarousel"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#similiarCarousel"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-            </div> -->
+            </div>
         </section>
         <!-- Firebase and User linking  -->
         <script type="module" src="../js/firebaseJS.js"></script>

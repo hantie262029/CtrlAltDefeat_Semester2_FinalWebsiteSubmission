@@ -20,3 +20,6 @@ https://rajputlakhveer.medium.com/bootstrap-5-mastery-guide-features-hacks-class
 
 Bootstrap Carousel cheat sheet
 https://www.w3schools.com/bootstrap/bootstrap_ref_js_carousel.asp
+
+URLSearchParams & window.location
+https://youtu.be/CZP1iQFQjEY?si=KGoSYS-b0jAeqniD
