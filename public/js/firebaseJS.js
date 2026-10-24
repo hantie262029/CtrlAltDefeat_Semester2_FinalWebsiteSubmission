@@ -21,11 +21,20 @@ let switchLink = document.getElementById("switch-link");
 let rememberCheckbox = document.getElementById("remember-checkbox");
 
 // Logout button
-let logoutButton = document.querySelectorAll("logout-button");
+let logoutButton = document.getElementById("logout-button");
 
 // Keep track of which mode the form is in
 // false; Log In mode, true; Sign Up mode
 let isSignUpMode = false;
+
+// Users Array helper functions
+function getUsersArray() {
+    return JSON.parse(localStorage.getItem("usersArray")) || [];
+}
+
+function saveUsersArray(usersArray) {
+    localStorage.setItem("usersArray", JSON.stringify(usersArray));
+}
 
 //login page functions
 function showMessage(messageContent, messageType) {
@@ -93,7 +102,22 @@ async function handleLogin(userEmail, userPassword) {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
         .then(function (userCredential) {
             const firebaseUser = userCredential.user;
-            const currentUser = new User(firebaseUser.email);
+
+            // Load all saved users
+            let usersArray = getUsersArray();
+
+            // Look for existing user
+            let currentUser = usersArray.find((user) => user.email === firebaseUser.email);
+
+            // Create user if not found
+            if (!currentUser) {
+                currentUser = new User(firebaseUser.email);
+
+                usersArray.push(currentUser);
+                saveUsersArray(usersArray);
+            }
+
+            // Save current session user
             localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
             console.log(currentUser);
@@ -103,6 +127,7 @@ async function handleLogin(userEmail, userPassword) {
         })
         .catch(function (error) {
             console.log("Log in Error: " + error.code);
+
             let friendlyMessage = getFriendlyErrorMessage(error.code);
             showMessage(friendlyMessage, "error");
         });
@@ -147,11 +172,11 @@ function handleSwitchClick(event) {
 async function handleLogout() {
     signOut(auth)
         .then(function () {
-            // When logging out, remove current user
-            // localStorage.removeItem("currentUser");
+            // Remove current session user
+            localStorage.removeItem("currentUser");
 
             console.log("Logged out");
-            // window.location.href = "index.html";
+            window.location.href = "../index.html";
         })
         .catch(function (error) {
             console.log("logout error: " + error.code);
