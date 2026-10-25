@@ -46,8 +46,8 @@ async function getMovies(url) {
     return movies;
 }
 
-function movieCard(movie) {
-    console.log("Movie card being built: " + movie.title);
+function movieCard(movie) { // use in wishlist
+    console.log("Movie card being built: " + movie.title); 
     return `
         <div class="col">
             <a href="individualmovie.html?id=${movie.id}" class="text-decoration-none text-reset">
@@ -91,6 +91,58 @@ function libraryCard(movie) {
             </div>
         </div>`;
 }
+
+async function addToWatchlist(movieID) {
+    // Load UsersArray & CurrentUser from localStorage
+    const usersArray = JSON.parse(localStorage.getItem("usersArray"));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    // Identify which movie's id matches that of the clicked button
+    // const movieAdd = allMovies.find(movie => movie.id === movieID);
+    /// THIS IS BREAKING BECAUSE IT IS NOT ACTUALLY FINDING THE CORRECT THING
+
+    let response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options); // this is the movie being selected
+    let movie = await response.json();
+    console.log("Movie Selected: ", movie);
+
+    // Check if it is already in the watchlist
+    // Use the some() method to check if the movieID is present in the currentUser.watchList array
+    const result = currentUser.watchList.some(
+        movie => movie.id === movieID);
+
+    // Check the result and log a message
+    if (result) {
+        // If already in watchlist, remove it
+        // Find the movie's index in the watchlist
+        const movieIndex = currentUser.watchList.findIndex(
+            movie => movie.id === movieID
+        );
+
+        currentUser.watchList.splice(movieIndex, 1);
+        alert("Removed from watchlist");
+
+    } else {
+        //If not, add to watchlist
+        currentUser.watchList.push(movie);
+
+        alert('Added to watchlist');
+    }
+
+    // Update currentUser in localStorage
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+    // Find currentUser in userArray and update in localStorage
+    // Find the current user in usersArray
+    const userIndex = usersArray.findIndex(
+        user => user.email === currentUser.email);
+
+    // Update the user
+    usersArray[userIndex] = currentUser;
+
+    localStorage.setItem("usersArray", JSON.stringify(usersArray));
+
+}
+
 
 !(async function () {
     // Load genre data
@@ -180,6 +232,10 @@ function libraryCard(movie) {
     } else if (document.getElementById("watchlistInner")) {
         // watchlist code goes here -->
 
+        // Watchlist functionality
+    
+
+
         // Load UsersArray & CurrentUser from localStorage
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         console.log(currentUser.watchList.length)
@@ -193,8 +249,9 @@ function libraryCard(movie) {
 
                 </div>`
         } else { // otherwise, populate with page similarly to the home screen
-
-
+            console.log(currentUser.username);
+            console.log(currentUser.watchList);
+            console.log(currentUser.watchList[0].title);
         }
 
     } else if (document.getElementById("libraryInner")) {
@@ -467,50 +524,3 @@ function makeCarousel(frame) {
 
 carouselFrames.forEach((frame) => makeCarousel(frame));
 
-// Watchlist functionality
-function addToWatchlist(movieID) {
-    // Load UsersArray & CurrentUser from localStorage
-    const usersArray = JSON.parse(localStorage.getItem("usersArray"));
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-    // Identify which movie's id matches that of the clicked button
-    const movieAdd = allMovies.find(movie => movie.id === movieID);
-    /// THIS IS BREAKING BECAUSE IT IS NOT ACTUALLY FINDING THE CORRECT THING
-
-    // Check if it is already in the watchlist
-    // Use the some() method to check if the movieID is present in the currentUser.watchList array
-    const result = currentUser.watchList.some(
-        movie => movie.id === movieID);
-
-    // Check the result and log a message
-    if (result) {
-        // If already in watchlist, remove it
-        // Find the movie's index in the watchlist
-        const movieIndex = currentUser.watchList.findIndex(
-            movie => movie.id === movieID
-        );
-
-        currentUser.watchList.splice(movieIndex, 1);
-        alert("Removed from watchlist");
-
-    } else {
-        //If not, add to watchlist
-        currentUser.watchList.push(movieAdd);
-
-        alert('Added to watchlist');
-    }
-
-    // Update currentUser in localStorage
-    localStorage.setItem("currentUser", JSON.stringify(currentUser));
-
-    // Find currentUser in userArray and update in localStorage
-    // Find the current user in usersArray
-    const userIndex = usersArray.findIndex(
-        user => user.email === currentUser.email);
-
-    // Update the user
-    usersArray[userIndex] = currentUser;
-
-    localStorage.setItem("usersArray", JSON.stringify(usersArray));
-
-}
