@@ -46,8 +46,8 @@ async function getMovies(url) {
     return movies;
 }
 
-function movieCard(movie) { // use in wishlist
-    console.log("Movie card being built: " + movie.title); 
+function movieCard(movie) {
+    console.log("Movie card being built: " + movie.title);
     return `
         <div class="col">
             <a href="individualmovie.html?id=${movie.id}" class="text-decoration-none text-reset">
@@ -59,6 +59,22 @@ function movieCard(movie) { // use in wishlist
             </a>
         </div>`;
 }
+
+function watchCard(movie) { // use in wishlist
+    console.log("Movie card being built: " + movie.title);
+    return `
+        <div class="col-md-2 mt-3">
+            <a href="individualmovie.html?id=${movie.id}" class="text-decoration-none text-reset">
+                <div class="card movie-card border-0 bg-transparent">
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="movie-poster rounded-2" alt="${movie.title}">
+                    <h6 class="movie-title mt-2 mb-1 d-none d-md-block">${movie.title}</h6>
+                    <p class="movie-rating mb-0"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.vote_average.toFixed(1)}</p>
+                </div>
+            </a>
+        </div>`;
+}
+
+
 
 function libraryCard(movie) {
     console.log("Library card being built: " + movie.title);
@@ -92,15 +108,13 @@ function libraryCard(movie) {
         </div>`;
 }
 
+// Watchlist functionality
 async function addToWatchlist(movieID) {
     // Load UsersArray & CurrentUser from localStorage
     const usersArray = JSON.parse(localStorage.getItem("usersArray"));
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     // Identify which movie's id matches that of the clicked button
-    // const movieAdd = allMovies.find(movie => movie.id === movieID);
-    /// THIS IS BREAKING BECAUSE IT IS NOT ACTUALLY FINDING THE CORRECT THING
-
     let response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options); // this is the movie being selected
     let movie = await response.json();
     console.log("Movie Selected: ", movie);
@@ -140,7 +154,6 @@ async function addToWatchlist(movieID) {
     usersArray[userIndex] = currentUser;
 
     localStorage.setItem("usersArray", JSON.stringify(usersArray));
-
 }
 
 
@@ -232,26 +245,24 @@ async function addToWatchlist(movieID) {
     } else if (document.getElementById("watchlistInner")) {
         // watchlist code goes here -->
 
-        // Watchlist functionality
-    
-
-
         // Load UsersArray & CurrentUser from localStorage
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         console.log(currentUser.watchList.length)
         console.log(currentUser)
+        watchListDiv = document.getElementById("watchlistInner");
+
         // If the watchlist is empty, display a message
         if (currentUser.watchList.length === 0) {
-            document.getElementById("watchlistInner").innerHTML = `
+            watchListDiv.innerHTML = `
                 <div class='watchListEmptyDiv '>
                     <h5>Your Watchlist is currently empty</h5>
                     <p>Please heart some movies to see your watchlist</p>
 
                 </div>`
         } else { // otherwise, populate with page similarly to the home screen
-            console.log(currentUser.username);
-            console.log(currentUser.watchList);
-            console.log(currentUser.watchList[0].title);
+            const moviesList = currentUser.watchList;
+
+            watchListDiv.innerHTML = moviesList.map(watchCard).join("");
         }
 
     } else if (document.getElementById("libraryInner")) {
@@ -523,4 +534,3 @@ function makeCarousel(frame) {
 }
 
 carouselFrames.forEach((frame) => makeCarousel(frame));
-
