@@ -82,7 +82,7 @@ function libraryCard(movie) {
                 <p class="card-title">${movie.overview}</p>
                 <div class="movieCardBtn">
                     <a href="individualmovie.html?id=${movie.id}" class="MovieBtn btn btn-primary">View Movie</a>
-                    <a href="#" class="ListBtn iconWrapper btn btn-primary"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a>
+                    <button class="ListBtn iconWrapper btn btn-primary" onclick="addToWatchlist(${movie.id})"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></button>
                 </div>
             </div>
             </div>
@@ -98,9 +98,9 @@ function libraryCard(movie) {
     let genreData = await genres.json();
 
     console.log("genre data: ", genreData);
-    
+
     if (document.getElementById("heroInner")) {
-        
+
         // Hero
         let heroMovies = await getMovies("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1", options);
         heroMovies = heroMovies.slice(0, 5); // only 5
@@ -180,6 +180,23 @@ function libraryCard(movie) {
     } else if (document.getElementById("watchlistInner")) {
         // watchlist code goes here -->
 
+        // Load UsersArray & CurrentUser from localStorage
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        console.log(currentUser.watchList.length)
+        console.log(currentUser)
+        // If the watchlist is empty, display a message
+        if (currentUser.watchList.length === 0) {
+            document.getElementById("watchlistInner").innerHTML = `
+                <div class='watchListEmptyDiv '>
+                    <h5>Your Watchlist is currently empty</h5>
+                    <p>Please heart some movies to see your watchlist</p>
+
+                </div>`
+        } else { // otherwise, populate with page similarly to the home screen
+
+
+        }
+
     } else if (document.getElementById("libraryInner")) {
         // Library
         async function loadLibrary(genreId) {
@@ -194,7 +211,7 @@ function libraryCard(movie) {
         }
 
         loadLibrary(""); // show all movies when the page opens
-    
+
         let buttons = document.querySelectorAll(".filterBtn button"); // fetch filter buttons
 
         buttons.forEach((button) => {
@@ -237,9 +254,9 @@ function libraryCard(movie) {
                 Release date: ${movie.release_date}
                 </p>
                 <p>${movie.overview}</p>
-                <a href="#" class="ListBtn iconWrapper btn btn-primary col-md-8">
+                <button class="ListBtn iconWrapper btn btn-primary col-md-8" onclick="addToWatchlist(${movie.id})">
                     <i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i>
-                </a>
+                </button>
         </div>`;
 
         // Similiar Movie reccomendations
@@ -278,7 +295,7 @@ function libraryCard(movie) {
         return
     }
 
-    
+
 
 
 })();
@@ -449,3 +466,51 @@ function makeCarousel(frame) {
 }
 
 carouselFrames.forEach((frame) => makeCarousel(frame));
+
+// Watchlist functionality
+function addToWatchlist(movieID) {
+    // Load UsersArray & CurrentUser from localStorage
+    const usersArray = JSON.parse(localStorage.getItem("usersArray"));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    // Identify which movie's id matches that of the clicked button
+    const movieAdd = allMovies.find(movie => movie.id === movieID);
+    /// THIS IS BREAKING BECAUSE IT IS NOT ACTUALLY FINDING THE CORRECT THING
+
+    // Check if it is already in the watchlist
+    // Use the some() method to check if the movieID is present in the currentUser.watchList array
+    const result = currentUser.watchList.some(
+        movie => movie.id === movieID);
+
+    // Check the result and log a message
+    if (result) {
+        // If already in watchlist, remove it
+        // Find the movie's index in the watchlist
+        const movieIndex = currentUser.watchList.findIndex(
+            movie => movie.id === movieID
+        );
+
+        currentUser.watchList.splice(movieIndex, 1);
+        alert("Removed from watchlist");
+
+    } else {
+        //If not, add to watchlist
+        currentUser.watchList.push(movieAdd);
+
+        alert('Added to watchlist');
+    }
+
+    // Update currentUser in localStorage
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+    // Find currentUser in userArray and update in localStorage
+    // Find the current user in usersArray
+    const userIndex = usersArray.findIndex(
+        user => user.email === currentUser.email);
+
+    // Update the user
+    usersArray[userIndex] = currentUser;
+
+    localStorage.setItem("usersArray", JSON.stringify(usersArray));
+
+}

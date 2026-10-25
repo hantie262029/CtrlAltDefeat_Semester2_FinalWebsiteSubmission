@@ -689,3 +689,19 @@ nav ul li ul li a,
 .hero-rating .star-icon {
     width: 20px;
 }
+
+/* Watch list styling */
+.watchListEmptyDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: space-around;
+    flex-direction: column;
+    margin-left: 10pt;
+    color: #91a0b3;
+    gap: 6px 6px;
+    width: 420px;
+}
+.watchListEmptyDiv h5 {
+    text-transform: uppercase;
+}
