@@ -50,10 +50,44 @@ function movieCard(movie) {
     console.log("Movie card being built: " + movie.title);
     return `
         <div class="col">
-            <div class="card movie-card border-0 bg-transparent">
-                <img src="${movie.poster}" class="movie-poster rounded-2" alt="${movie.title}">
-                <h6 class="movie-title mt-2 mb-1 d-none d-md-block">${movie.title}</h6>
-                <p class="movie-rating mb-0"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}</p>
+            <a href="individualmovie.html?id=${movie.id}" class="text-decoration-none text-reset">
+                <div class="card movie-card border-0 bg-transparent">
+                    <img src="${movie.poster}" class="movie-poster rounded-2" alt="${movie.title}">
+                    <h6 class="movie-title mt-2 mb-1 d-none d-md-block">${movie.title}</h6>
+                    <p class="movie-rating mb-0"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}</p>
+                </div>
+            </a>
+        </div>`;
+}
+
+function libraryCard(movie) {
+    console.log("Library card being built: " + movie.title);
+    return `
+        <div class="col-lg-6 mt-3">
+            <div class="card libraryCard info-box h-100">
+            <div class="row h-100">
+            <div class="col-sm-5">
+                <div class="libraryCardImg">
+                    <img src="${movie.poster}" class="card-img" style="object-fit:cover;" alt="${movie.title}">
+                </div>
+            </div>
+
+            <div class="col-sm-7 card-body">
+            <div class="libraryCardInfo">
+                <h3 class="card-title libraryCardTitle">${movie.title}</h3>
+                <p>
+                <span class="libraryRating"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}</span> <br />
+                Release date: <span class="libraryReleaseDate">${movie.releaseDate}</span>
+                </p>
+                <p class="card-title">${movie.overview}</p>
+                <div class="movieCardBtn">
+                    <a href="individualmovie.html?id=${movie.id}" class="MovieBtn btn btn-primary">View Movie</a>
+                    <a href="#" class="ListBtn iconWrapper btn btn-primary"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a>
+                </div>
+            </div>
+            </div>
+
+            </div>
             </div>
         </div>`;
 }
@@ -75,14 +109,16 @@ function movieCard(movie) {
         document.getElementById("heroInner").innerHTML = heroMovies
             .map((movie, i) => `
             <div class="carousel-item ${i === 0 ? "active" : ""}">
-                <img src="${movie.backdrop}" class="d-block w-100 hero-img" alt="${movie.title}">
-                <div class="carousel-caption text-start">
-                    <h2>${movie.title}</h2>
-                    <p class="hero-rating">
-                    <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}
-                    </p>
-                    <p class="hero-overview d-none d-md-block">${movie.overview}</p>
-                </div>
+                <a href="individualmovie.html?id=${movie.id}" class="d-block text-decoration-none text-reset">
+                    <img src="${movie.backdrop}" class="d-block w-100 hero-img" alt="${movie.title}">
+                    <div class="carousel-caption text-start">
+                        <h2>${movie.title}</h2>
+                        <p class="hero-rating">
+                        <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}
+                        </p>
+                        <p class="hero-overview d-none d-md-block">${movie.overview}</p>
+                    </div>
+                </a>
             </div>
             `,
         ).join("");
@@ -142,44 +178,101 @@ function movieCard(movie) {
     });
 
     } else if (document.getElementById("watchlistInner")) {
+        // watchlist code goes here -->
 
     } else if (document.getElementById("libraryInner")) {
         // Library
-        let libraryMovies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+        async function loadLibrary(genreId) {
+            let url = "https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&with_genres=" + genreId;
 
-        console.log("Library Movie list:", libraryMovies);
+            let page1 = await getMovies(url + "&page=1");
+            let page2 = await getMovies(url + "&page=2");
+            let libraryMovies = page1.concat(page2); // 40 movies (brief needs 25+)
+            console.log("Library Movie list:", libraryMovies);
+
+            document.getElementById("libraryInner").innerHTML = libraryMovies.map(libraryCard).join("");
+        }
+
+        loadLibrary(""); // show all movies when the page opens
     
-        document.getElementById("libraryInner").innerHTML = libraryMovies.map(
-            (movie) => `
-            <div class="col-lg-6 mt-3 ">
-                <div class="card libraryCard info-box h-100">
-                <div class="row h-100">
-                <div class="col-sm-5">
-                    <div class="libraryCardImg">
-                        <img src="${movie.poster}" class="card-img" style="object-fit:cover;" alt="${movie.title}">
-                    </div>
-                </div>
+        let buttons = document.querySelectorAll(".filterBtn button"); // fetch filter buttons
 
-                <div class="col-sm-7 card-body">
-                <div class="libraryCardInfo">
-                    <h3 class="card-title">${movie.title}</h3>
-                    <p class="hero-rating">
-                        <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.rating.toFixed(1)}
-                    </p>
-                    <h6 class="card-title">${movie.overview}</h6>
-                    <div class="movieCardBtn">
-                        <a href="#" class="MovieBtn btn btn-primary">View Movie</a>
-                        <a href="#" class="ListBtn iconWrapper btn btn-primary"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a> 
-                    </div>
-                </div>
-                </div>
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                buttons.forEach((b) => {
+                    b.classList.remove("active");
+                });
 
-                </div>
-                </div>
-            </div>
-            `
-        ).join("");
+                button.classList.add("active");
+
+                let genreId = button.dataset.genre;
+                console.log("Genre ID:", genreId);
+
+                loadLibrary(genreId);
+            });
+        });
+
     } else if (document.getElementById("moviePageInner")) {
+
+        let params = new URLSearchParams(window.location.search);
+        let movieId = params.get("id");
+        console.log("Movie ID:", movieId);
+
+        let response = await fetch (`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options);
+        let movie = await response.json();
+        console.log("Selected Movie:", movie);
+
+        let genreNames = movie.genres.map((genre) => genre.name).join(", ");
+
+        document.getElementById("moviePageInner").innerHTML=`
+            <div class="col-sm-12 col-lg-6">
+                <img class="card-img-top rounded-3" style="object-fit:cover;" src="https://image.tmdb.org/t/p/w1280${movie.backdrop_path}" alt="${movie.title}" />
+            </div>
+            <div class="movieText col-sm-12 col-lg-6">
+                <h1>${movie.title}</h1>
+                <p>
+                <img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.vote_average.toFixed(1)} <br />
+                ${genreNames} <br />
+                ${movie.runtime} min<br />
+                Release date: ${movie.release_date}
+                </p>
+                <p>${movie.overview}</p>
+                <a href="#" class="ListBtn iconWrapper btn btn-primary col-md-8">
+                    <i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i>
+                </a>
+        </div>`;
+
+        // Similiar Movie reccomendations
+        let similiarMovies = await getMovies(`https://api.themoviedb.org/3/movie/${movieId}/similar`);
+        similiarMovies = similiarMovies.slice(0,12); // grab 12 movies
+        console.log("Similiar Movies movies: ", similiarMovies);
+
+        let currentSlideAmount = 0;
+
+        function buildCarousel() {
+        let slideAmount = window.innerWidth < 992 ? 3 : 6; // 3 on phone, 6 on desktop
+
+        if (slideAmount === currentSlideAmount) return; // only rebuild when window size changes
+        currentSlideAmount = slideAmount;
+
+        let carouselHTML = "";
+
+        for (let i = 0; i < similiarMovies.length; i = i + slideAmount) {
+            // loops through slides until its double the slide amount
+            let slideMovies = similiarMovies.slice(i, i + slideAmount);
+            carouselHTML += `
+                <div class="carousel-item ${i === 0 ? "active" : ""}">
+                    <div class="row row-cols-${slideAmount} g-2">
+                        ${slideMovies.map(movieCard).join("")}
+                    </div>
+                </div>`;
+        }
+
+        document.querySelector("#similiarCarousel .carousel-inner").innerHTML = carouselHTML;
+    }
+
+    buildCarousel();
+    window.addEventListener("resize", buildCarousel);
 
     } else {
         return

@@ -3,7 +3,7 @@
 
 body {
     /* background-color: #1F2B3B */
-    background-image: linear-gradient(to bottom, #10182a, #1f2b3b, #575daa, #929cf9);
+    background-image: linear-gradient(to bottom, #10182a, #25375f, #575daa);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -119,6 +119,7 @@ button {
 }
 
 #trendingCarousel button:hover,
+#similiarCarousel button:hover,
 #logInCard button:hover {
     background-color: #8bebba;
 }
@@ -405,6 +406,7 @@ nav ul li ul li a,
     z-index: 10;
     position: absolute;
     top: 5vh !important;
+    pointer-events: none;
 }
 
 .carousel-slide {
@@ -479,6 +481,23 @@ nav ul li ul li a,
 }
 
 /* Library */
+
+.libraryCardTitle {
+    color: white;
+}
+
+.libraryCardInfo {
+    color: whitesmoke;
+    font-weight: normal;
+}
+
+.libraryRating {
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 .filterBtn {
     padding-left: 2%;
@@ -612,7 +631,9 @@ nav ul li ul li a,
 }
 
 #trendingCarousel .carousel-control-prev,
-#trendingCarousel .carousel-control-next {
+#trendingCarousel .carousel-control-next,
+#similiarCarousel .carousel-control-prev,
+#similiarCarousel .carousel-control-next {
     width: 3rem;
 }
 
