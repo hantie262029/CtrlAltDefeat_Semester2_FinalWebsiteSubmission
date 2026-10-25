@@ -22,7 +22,6 @@
     </head>
 
     <body onload="homeWelcomeMessage()">
-
         <!-- navbar -->
         <section class="navigation">
             <div class="nav-container">
@@ -44,9 +43,11 @@
                             <a href="library.html">Library</a>
                         </li>
                         <li>
-                            <a><div class="logOutDiv">
-                                <button id="logout-button">Log Out</button>
-                            </div></a>
+                            <a
+                                ><div class="logOutDiv">
+                                    <button id="logout-button">Log Out</button>
+                                </div></a
+                            >
                         </li>
                         <li>
                             <a class="searchNavAnchor"><input type="text" placeholder="Search" class="searchNav" /></a>
@@ -65,7 +66,7 @@
                     <h1>Welcome You!</h1>
                 </div>
                 <div class="carousel-inner" id="heroInner">
-                    <p class="text-center py-5">Loading new releases…</p> 
+                    <p class="text-center py-5">Loading new releases…</p>
                     <!-- Movies added in js -->
                 </div>
 
@@ -137,7 +138,6 @@
         </section>
 
         <!-- Carousel home top slider from codepen link -->
-        <script src="https://kit.fontawesome.com/42e3e833b9.js" crossorigin="anonymous"></script>
         <!-- Firebase and User linking  -->
         <script type="module" src="../js/firebaseJS.js"></script>
         <script defer src="../js/userScripts.js"></script>

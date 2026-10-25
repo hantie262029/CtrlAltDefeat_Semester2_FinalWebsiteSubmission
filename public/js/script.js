@@ -63,17 +63,22 @@ function movieCard(movie) {
 function watchCard(movie) { // use in wishlist
     console.log("Movie card being built: " + movie.title);
     return `
-        <div class="col-md-2 mt-3">
-            <a href="individualmovie.html?id=${movie.id}" class="text-decoration-none text-reset">
+        <div class="col-md-2 mt-3 watchlistDiv">
+            <div class="text-decoration-none text-reset">
                 <div class="card movie-card border-0 bg-transparent">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="movie-poster rounded-2" alt="${movie.title}">
-                    <h6 class="movie-title mt-2 mb-1 d-none d-md-block">${movie.title}</h6>
-                    <p class="movie-rating mb-0"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.vote_average.toFixed(1)}</p>
+                    <a href="individualmovie.html?id=${movie.id}">
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="movie-poster rounded-2" alt="${movie.title}"></a>
+                    <div class="watchlistCardDiv">
+                        <div>
+                            <h6 class="movie-title mt-2 mb-1 d-none d-md-block">${movie.title}</h6>
+                            <p class="movie-rating mb-0"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.vote_average.toFixed(1)}</p>
+                        </div>
+                            <button class="ListBtn iconWrapper btn btn-primary" onclick="addToWatchlist(${movie.id})"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></button>
+                        </div>
                 </div>
-            </a>
+            </div>
         </div>`;
 }
-
 
 
 function libraryCard(movie) {
@@ -117,12 +122,14 @@ async function addToWatchlist(movieID) {
     // Identify which movie's id matches that of the clicked button
     let response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options); // this is the movie being selected
     let movie = await response.json();
-    console.log("Movie Selected: ", movie);
+    // console.log("Movie Selected: ", movie);
 
     // Check if it is already in the watchlist
     // Use the some() method to check if the movieID is present in the currentUser.watchList array
     const result = currentUser.watchList.some(
         movie => movie.id === movieID);
+
+    let title = movie.title;
 
     // Check the result and log a message
     if (result) {
@@ -133,13 +140,13 @@ async function addToWatchlist(movieID) {
         );
 
         currentUser.watchList.splice(movieIndex, 1);
-        alert("Removed from watchlist");
+        alert("Removed '" + title + "' from Watchlist");
 
     } else {
         //If not, add to watchlist
         currentUser.watchList.push(movie);
 
-        alert('Added to watchlist');
+        alert("Added '" + title + "' to Watchlist");
     }
 
     // Update currentUser in localStorage
@@ -283,7 +290,7 @@ async function addToWatchlist(movieID) {
 
         if (searchTerm) {
             let results = await getMovies("https://api.themoviedb.org/3/search/movie?language=en-US&query=" + searchTerm);
-            
+
             if (results.length > 0) {
                 document.getElementById("libraryInner").innerHTML = results.map(libraryCard).join("");
             } else {
@@ -342,7 +349,7 @@ async function addToWatchlist(movieID) {
                     <div>
                         <button class="ListBtn iconWrapper btn btn-primary col-md-8" onclick="addToWatchlist(${movie.id})">
                     <i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i>
-                </button>   
+                </button>
                     </div>
                 </div>
         </div>`;
