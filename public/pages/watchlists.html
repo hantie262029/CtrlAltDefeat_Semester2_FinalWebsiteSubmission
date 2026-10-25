@@ -17,6 +17,8 @@
             rel="stylesheet"
             integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
             crossorigin="anonymous" />
+        <!-- font awesome link -->
+        <script src="https://kit.fontawesome.com/5c5b3fd956.js" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="../css/main.css" />
     </head>
@@ -42,9 +44,11 @@
                             <a href="library.html">Library</a>
                         </li>
                         <li>
-                            <a><div class="logOutDiv">
-                                <button id="logout-button">Log Out</button>
-                            </div></a>
+                            <a
+                                ><div class="logOutDiv">
+                                    <button id="logout-button">Log Out</button>
+                                </div></a
+                            >
                         </li>
                         <li>
                             <a class="searchNavAnchor"><input type="text" placeholder="Search" class="searchNav" /></a>
@@ -58,7 +62,6 @@
         <section></section>
 
         <!-- Lists (1 and 2) -->
-
         <!-- Title -->
         <section>
             <div class="listHeading userWatchlistHead">
@@ -68,10 +71,6 @@
 
         <!-- Card set basic - Lists -->
         <section id="list1">
-            <!-- <div class="listHeading">
-                <h3>List 1</h3>
-            </div> -->
-
             <div class="container-fluid">
                 <div class="row" id="watchlistInner">
                     <!-- <div class="col-md-2 mt-3">
@@ -140,6 +139,7 @@
         <!-- Firebase and User linking  -->
         <script type="module" src="../js/firebaseJS.js"></script>
         <script defer src="../js/userScripts.js"></script>
+
         <!-- jQuery, from a CDN -->
         <script
             src="https://code.jquery.com/jquery-4.0.0.js"

@@ -112,7 +112,6 @@ button {
     cursor: pointer;
 }
 
-
 #heroCarousel .carousel-control-prev:hover,
 #heroCarousel .carousel-control-next:hover {
     background-color: none !important;
@@ -555,7 +554,7 @@ nav ul li ul li a,
 
 .MovieBtn:hover,
 .ListBtn:hover,
-.showMoreBtn:hover, 
+.showMoreBtn:hover,
 .playBtn:hover {
     background-color: #08095e;
 }
@@ -573,22 +572,21 @@ nav ul li ul li a,
 }
 
 /* Play button */
-.playBtn{
-   width: 50px;
-   height: 50px;
-   border-radius: 80px;
-   color: #080808;
-   border-color: #10182a00;
-   background-color: #4fd984;
-   margin-right: 20px;
+.playBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 80px;
+    color: #080808;
+    border-color: #10182a00;
+    background-color: #4fd984;
+    margin-right: 20px;
 }
 
-.individualMovieBtn{
+.individualMovieBtn {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     align-items: center;
 }
-
 
 /* Lists Page */
 
@@ -719,4 +717,6 @@ nav ul li ul li a,
     text-transform: uppercase;
 }
 
-
+.watchlistDiv {
+    padding: 0px 18px;
+}
