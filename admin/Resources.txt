@@ -26,3 +26,6 @@ https://youtu.be/CZP1iQFQjEY?si=KGoSYS-b0jAeqniD
 
 Removing Item from Array at specific Index
 https://dev.to/smpnjn/deleting-an-item-in-an-array-at-a-specific-index-3mif
+
+Refresh parent page without entirely reloading
+https://stackoverflow.com/questions/15897434/javascript-refresh-parent-page-without-entirely-reloading

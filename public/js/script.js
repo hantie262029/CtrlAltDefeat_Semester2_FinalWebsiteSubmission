@@ -66,15 +66,13 @@ function watchCard(movie) { // use in wishlist
         <div class="col-md-2 mt-3 watchlistDiv">
             <div class="text-decoration-none text-reset">
                 <div class="card movie-card border-0 bg-transparent">
-                    <a href="individualmovie.html?id=${movie.id}">
+                    <a class="watchlistPoster" href="individualmovie.html?id=${movie.id}">
                         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="movie-poster rounded-2" alt="${movie.title}"></a>
-                    <div class="watchlistCardDiv">
-                        <div>
+                    <div class="removeBtnDiv">
+                            <button class="ListBtn iconWrapper btn btn-primary pull-right" onclick="removeWatchlist(${movie.id})"><i class="fa-solid fa-trash-can"></i><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
                             <h6 class="movie-title mt-2 mb-1 d-none d-md-block">${movie.title}</h6>
                             <p class="movie-rating mb-0"><img src="../assets/img/star-symbol-icon.png" class="star-icon" alt="star"> ${movie.vote_average.toFixed(1)}</p>
-                        </div>
-                            <button class="ListBtn iconWrapper btn btn-primary" onclick="addToWatchlist(${movie.id})"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></button>
-                        </div>
                 </div>
             </div>
         </div>`;
@@ -161,6 +159,51 @@ async function addToWatchlist(movieID) {
     usersArray[userIndex] = currentUser;
 
     localStorage.setItem("usersArray", JSON.stringify(usersArray));
+}
+
+async function removeWatchlist(movieID) {
+    // Load UsersArray & CurrentUser from localStorage
+    const usersArray = JSON.parse(localStorage.getItem("usersArray"));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    // Identify which movie's id matches that of the clicked button
+    let response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options); // this is the movie being selected
+    let movie = await response.json();
+    // console.log("Movie Selected: ", movie);
+
+    // Check if it is already in the watchlist
+    // Use the some() method to check if the movieID is present in the currentUser.watchList array
+    const result = currentUser.watchList.some(
+        movie => movie.id === movieID);
+
+    let title = movie.title;
+
+    // Check the result and log a message
+    // Since this is just happening on the watchlist page, will remove the redundant if statement
+
+    // Find the movie's index in the watchlist
+    const movieIndex = currentUser.watchList.findIndex(
+        movie => movie.id === movieID
+    );
+
+    currentUser.watchList.splice(movieIndex, 1);
+    alert("Removed '" + title + "' from Watchlist");
+
+    // Update currentUser in localStorage
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+    // Find currentUser in userArray and update in localStorage
+    // Find the current user in usersArray
+    const userIndex = usersArray.findIndex(
+        user => user.email === currentUser.email);
+
+    // Update the user
+    usersArray[userIndex] = currentUser;
+    localStorage.setItem("usersArray", JSON.stringify(usersArray));
+
+    // Refresh the page so that the movie disappears from the screen
+    window.location = window.location;
+
 }
 
 

@@ -721,3 +721,18 @@ nav ul li ul li a,
 .watchlistDiv {
     padding: 0px 18px;
 }
+
+.watchlistPoster,
+.removeBtnDiv-div {
+    /* Both elements occupy the exact same row and column line */
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.removeBtnDiv {
+    position: absolute;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2; /* Ensures it stays on top */
+}
