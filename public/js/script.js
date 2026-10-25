@@ -322,9 +322,16 @@ async function addToWatchlist(movieID) {
                 Release date: ${movie.release_date}
                 </p>
                 <p>${movie.overview}</p>
-                <button class="ListBtn iconWrapper btn btn-primary col-md-8" onclick="addToWatchlist(${movie.id})">
+                <div class="individualMovieBtn">
+                    <div>
+                        <button type="button" class="playBtn btn btn-primary"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                    <div>
+                        <button class="ListBtn iconWrapper btn btn-primary col-md-8" onclick="addToWatchlist(${movie.id})">
                     <i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i>
-                </button>
+                </button>   
+                    </div>
+                </div>
         </div>`;
 
         // Similiar Movie reccomendations

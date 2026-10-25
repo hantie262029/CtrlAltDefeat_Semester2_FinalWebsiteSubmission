@@ -555,7 +555,8 @@ nav ul li ul li a,
 
 .MovieBtn:hover,
 .ListBtn:hover,
-.showMoreBtn:hover {
+.showMoreBtn:hover, 
+.playBtn:hover {
     background-color: #08095e;
 }
 
@@ -570,6 +571,24 @@ nav ul li ul li a,
 .iconWrapper:hover .fa-solid {
     display: inline-block;
 }
+
+/* Play button */
+.playBtn{
+   width: 50px;
+   height: 50px;
+   border-radius: 80px;
+   color: #080808;
+   border-color: #10182a00;
+   background-color: #4fd984;
+   margin-right: 20px;
+}
+
+.individualMovieBtn{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+}
+
 
 /* Lists Page */
 
@@ -699,3 +718,5 @@ nav ul li ul li a,
 .watchListEmptyDiv h5 {
     text-transform: uppercase;
 }
+
+
