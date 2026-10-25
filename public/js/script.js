@@ -237,9 +237,14 @@ function libraryCard(movie) {
                 Release date: ${movie.release_date}
                 </p>
                 <p>${movie.overview}</p>
-                <a href="#" class="ListBtn iconWrapper btn btn-primary col-md-8">
-                    <i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i>
-                </a>
+                <div class="individualMovieBtn">
+                    <div>
+                        <button type="button" class="playBtn btn btn-primary"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                    <div>
+                        <a href="#" class="ListBtn iconWrapper btn btn-primary"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-heart"></i></a>   
+                    </div>
+                </div>
         </div>`;
 
         // Similiar Movie reccomendations
