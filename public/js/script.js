@@ -28,7 +28,7 @@ async function getMovies(url) {
 
     console.log("API response:", data);
 
-    let movies = data.results.map(
+    let movies = data.results.filter((movie) => movie.poster_path).map( // skip movies that don't have a poster
         (movie) =>
             new Movie(
                 movie.id,
@@ -278,7 +278,20 @@ async function addToWatchlist(movieID) {
             document.getElementById("libraryInner").innerHTML = libraryMovies.map(libraryCard).join("");
         }
 
-        loadLibrary(""); // show all movies when the page opens
+        let searchTerm = localStorage.getItem("searchTerm");
+        localStorage.removeItem("searchTerm"); // clear search term local storage after putting it in variable
+
+        if (searchTerm) {
+            let results = await getMovies("https://api.themoviedb.org/3/search/movie?language=en-US&query=" + searchTerm);
+            
+            if (results.length > 0) {
+                document.getElementById("libraryInner").innerHTML = results.map(libraryCard).join("");
+            } else {
+                document.getElementById("libraryInner").innerHTML = `<p class="text-center py-5">No movies found for "${searchTerm}"</p>`;
+            }
+        } else {
+            loadLibrary(""); // load movies as usual if no search
+        }
 
         let buttons = document.querySelectorAll(".filterBtn button"); // fetch filter buttons
 
@@ -363,10 +376,21 @@ async function addToWatchlist(movieID) {
         return
     }
 
-
-
-
 })();
+
+// SEARCH BAR
+document.querySelectorAll(".searchNav").forEach((input) => {
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+        let searchText = input.value.trim(); // get what the user typed
+
+            if (searchText !== "") {
+                localStorage.setItem("searchTerm", searchText); // save the search
+                window.location.href = "library.html"; // go to the library page
+            }
+        }
+    });
+});
 
 // Navbar CodePen based js below:
 
