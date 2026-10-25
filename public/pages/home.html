@@ -20,7 +20,9 @@
 
         <link rel="stylesheet" href="../css/main.css" />
     </head>
+
     <body onload="homeWelcomeMessage()">
+
         <!-- navbar -->
         <section class="navigation">
             <div class="nav-container">
@@ -58,12 +60,13 @@
         <section id="homeHero" class="mb-4">
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-caption greetUser">
-                    <!-- Add name grabbed from login/sign in and add in to greeting -->
+                    <!--name grabbed from login/sign in and added into greeting -->
                     <!-- This username is just whatever is in front of the '@' of the user-->
                     <h1>Welcome You!</h1>
                 </div>
                 <div class="carousel-inner" id="heroInner">
-                    <p class="text-center py-5">Loading new releases…</p>
+                    <p class="text-center py-5">Loading new releases…</p> 
+                    <!-- Movies added in js -->
                 </div>
 
                 <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
@@ -133,7 +136,7 @@
             </div>
         </section>
 
-        <!-- Carousel home top slider from codepen TBC -->
+        <!-- Carousel home top slider from codepen link -->
         <script src="https://kit.fontawesome.com/42e3e833b9.js" crossorigin="anonymous"></script>
         <!-- Firebase and User linking  -->
         <script type="module" src="../js/firebaseJS.js"></script>

@@ -1,8 +1,7 @@
 @charset "UTF-8";
-/* Basic css */
+/* Basic / Base css */
 
 body {
-    /* background-color: #1F2B3B */
     background-image: linear-gradient(to bottom, #10182a, #25375f, #575daa);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -25,6 +24,7 @@ body {
     border-radius: 20px;
 }
 
+/* info-box styling class is used in login and for libraryCards */
 .info-box {
     gap: 3em;
     background-image: radial-gradient(rgba(128, 139, 247, 0.1), rgba(204, 215, 230, 0.25));
@@ -99,7 +99,6 @@ input {
 input:focus {
     outline: none;
     border-color: #4cd987;
-    /* border-width: 3px; */
 }
 
 button {
@@ -113,6 +112,7 @@ button {
     cursor: pointer;
 }
 
+
 #heroCarousel .carousel-control-prev:hover,
 #heroCarousel .carousel-control-next:hover {
     background-color: none !important;
@@ -123,10 +123,6 @@ button {
 #logInCard button:hover {
     background-color: #8bebba;
 }
-
-/* button:hover {
-    background-color: #8bebba;
-} */
 
 #message-text {
     min-height: 20px;
@@ -170,6 +166,7 @@ button {
 }
 
 /* navbar */
+/* Base navbar is from Codepen originally*/
 
 .navigation {
     height: 70px;
@@ -268,7 +265,7 @@ nav ul li ul li a,
     cursor: pointer;
 }
 
-/* Fixed search bar hover styling */
+/* search bar hover styling */
 .searchNavAnchor:hover {
     background: #4fd984;
 }
@@ -382,7 +379,7 @@ nav ul li ul li a,
     background-color: #10182a;
 }
 
-/* Home Hero Slider from Codepen */
+/* Home Hero Slider from Codepen originally*/
 * {
     padding: 0px;
     margin: 0px;
@@ -510,11 +507,9 @@ nav ul li ul li a,
 .libraryCard {
     height: 40vh;
     background-color: #48516454;
-    /* height: 100%; */
 }
 
 .libraryCardImg {
-    /* width: 60%; */
     height: 100%;
     display: flex;
     object-fit: cover;
@@ -525,9 +520,10 @@ nav ul li ul li a,
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* margin-left: 2px; */
     margin-right: 4px;
 }
+
+/* Buttons */
 
 .movieCardBtn {
     padding: 0%;
@@ -541,7 +537,6 @@ nav ul li ul li a,
     color: #080808;
     background-color: #4fd984;
     border-color: #10182a00;
-    /* justify-self: flex-end; */
     margin-bottom: 5px;
 }
 
@@ -585,9 +580,7 @@ nav ul li ul li a,
     padding-bottom: 2vh;
 }
 
-#list2 {
-    padding-top: 20px;
-}
+/* Individual movie pg */
 
 /* Hero */
 
