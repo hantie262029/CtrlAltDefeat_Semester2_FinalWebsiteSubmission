@@ -613,6 +613,7 @@ nav ul li ul li a,
 }
 
 .movieText {
+    padding-top: 10px;
     color: #ffffff;
     padding-left: 20px;
     display: flex;
