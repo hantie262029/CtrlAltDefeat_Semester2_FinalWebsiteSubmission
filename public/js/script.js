@@ -63,7 +63,7 @@ function movieCard(movie) {
 function watchCard(movie) { // use in wishlist
     console.log("Movie card being built: " + movie.title);
     return `
-        <div class="col-md-2 mt-3 watchlistDiv">
+        <div class="col-md-4 col-lg-2 mt-3 watchlistDiv">
             <div class="text-decoration-none text-reset">
                 <div class="card movie-card border-0 bg-transparent">
                     <a class="watchlistPoster" href="individualmovie.html?id=${movie.id}">

@@ -736,3 +736,12 @@ nav ul li ul li a,
     right: 0;
     z-index: 2; /* Ensures it stays on top */
 }
+
+.removeBtnDiv button {
+    /* width: 60px;
+    height: 50px; */
+    margin: 20px;
+    scale: 1.5;
+}
+
+
